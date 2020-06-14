@@ -1,0 +1,104 @@
+
+<!-- HEADER -->
+		<header>
+			<!-- TOP HEADER -->
+			<div id="top-header">
+					<ul class="header-links pull-left" style="padding-left:10px">
+						<li><a href="#"><i class="fa fa-phone"></i> +91-9967937648</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> electro@gmail.com</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> Kurla Mumbai</a></li>
+					</ul>
+					<ul class="header-links pull-right" style="padding-right:10px">
+				
+						<li><a href="/users/login"><i class="fa fa-user-o"></i> My Account</a></li>
+					</ul>
+			</div>
+			<!-- /TOP HEADER -->
+
+			<!-- MAIN HEADER -->
+			<div id="header">
+					<!-- row -->
+					<div class="row" style="padding-left:10px">
+						<!-- LOGO -->
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="#" class="logo">
+									<img src="/img/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<!-- /LOGO -->
+					</div>
+					<!-- row -->
+			</div>
+			<!-- /MAIN HEADER -->
+		</header>
+		<!-- /HEADER -->
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+<body style="background-color: #FFF;">
+	
+	<div class="limiter">
+		<div class="container-login100" style="min-height: 78vh">
+			<div class="wrap-login100"  style="min-height: 78vh">
+				<% include ./partials/messages %>
+				<form action="/users/login" method="POST" class="login100-form validate-form" style="background-color: #fff;min-height: 78vh">
+					<span class="login100-form-title p-b-43" style="font-family:inherit;">
+						Login to continue
+					</span>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email">
+						<span class="focus-input100"></span>
+						<span class="label-input100" style="font-family:'Montserrat', sans-serif;">Email</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100" type="password" name="pass">
+						<span class="focus-input100"></span>
+						<span class="label-input100" style="font-family:'Montserrat', sans-serif;">Password</span>
+					</div>
+
+					<div class="flex-sb-m w-full p-t-3 p-b-32">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" style="color: #D10024; font-family:inherit;">
+							<label class="label-checkbox100"  for="ckb1" style="font-family:inherit; ">
+								Remember me
+							</label>
+						</div>
+
+						<div>
+							<a href="#" class="txt1" style="font-family:'Montserrat', sans-serif;">
+								Forgot Password?
+							</a>
+						</div>
+					</div>
+			
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" style="font-family: 'Montserrat', sans-serif; background-color: #D10024;">
+							Login
+						</button>
+					</div>
+
+				</form>
+
+				<div class="login100-more" style="background-image: url('/img/login.jpg');">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+	
