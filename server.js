@@ -1,6 +1,7 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 
@@ -27,7 +28,12 @@ app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 //Bodyparser
-app.use(express.urlencoded({ extended: false }));
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+//app.use(express.urlencoded({ extended: true }));
 
 /*
 //Express session 
@@ -46,9 +52,9 @@ app.use((req, res, next) => {
 });*/
 
 //routes
-app.use('/', require('./routes/index'))
-app.use('/users', require('./routes/users'))
-app.use('/product', require('./routes/product'))
+app.use('/', require('./routes/index.js'))
+app.use('/users', require('./routes/users.js'))
+app.use('/product', require('./routes/product.js'))
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`server started on port ${PORT}`));
