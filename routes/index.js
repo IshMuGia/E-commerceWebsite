@@ -7,14 +7,7 @@ router.get("/", (req, res) => {
     Prod.find({}, 'brand s_des mrp -_id')
         .then(results => {
             if (results) {
-                res.send(results);
-                //user exists
-                /*errors.push({ msg: 'Email is already registered!' });
-                res.render('register', {
-                    errors,
-                    email,
-                    password
-                });*/
+                res.render('index', results);
             } else { console.log("Empty") }
         })
         .catch(err => console.log(err));
