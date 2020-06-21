@@ -7,6 +7,7 @@ router.get("/", (req, res) => {
     Prod.find({}, 'brand s_des img1 mrp -_id')
         .then(results => {
             if (results) {
+                console.log(results);
 res.render('index', { results: results });
             } else { console.log("Empty") }
         })
@@ -34,6 +35,22 @@ router.get("/", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     res.render("index");
 });
+
+router.get("/myaccount", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("myaccount");
+});
+
+router.get("/shop", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("shop");
+});
+
+router.get("/product", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("product");
+});
+
 
 router.get("/", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
