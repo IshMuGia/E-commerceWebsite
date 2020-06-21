@@ -51,6 +51,20 @@ router.get("/product", (req, res) => {
     res.render("product");
 });
 
+router.get("/cart", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("cart");
+});
+
+router.get("/checkout", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("checkout");
+});
+
+router.get("/wishlist", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("wishlist");
+});
 
 router.get("/", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
