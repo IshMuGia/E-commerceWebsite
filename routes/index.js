@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
     Prod.find({}, 'brand s_des mrp -_id')
         .then(results => {
             if (results) {
-                res.render('index', results);
+                res.render('index', { results: results });
             } else { console.log("Empty") }
         })
         .catch(err => console.log(err));

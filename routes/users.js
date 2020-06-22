@@ -91,30 +91,57 @@ router.post("/register", (req, res) => {
 
 //Login handle
 router.post("/login", (req, res) => {
-    const { email, password } = req.body;
-    if (errors) {
-        res.render('register', {
-            errors,
-            email,
-            password
-        });
-    } else {
-        // validation passed
-        User.findOne({ email: email })
-            .then(user => {
+    var email = req.body.email
+    var password = req.body.password
+    console.log(req.body);
+    User.findOne({ email })
+        .then(user => {
+            //if user not exist than return status 400
+            if (!user) return res.status(400).json({ msg: "User not exist" })
 
-                if (user) {
-                    //user exists
-                    res.render('register', {
-                        errors,
-                        email,
-                        password
-                    });
+            //if user exist than compare password
+            //password comes from the user
+            //user.password comes from the database
+            bcrypt.compare(password, user.password, (err, data) => {
+                //if error than throw error
+                if (err) throw err
+                    //if both match than you can do anything
+                if (data) {
+                    return res.status(200).json({ msg: "Login success" })
+                } else {
+                    return res.status(401).json({ msg: "Invalid password" })
                 }
+            });
+            /*if (user.password != password) return res.status(401).send({ msg: 'Invalid email or password' });
+            res.sendStatus(200);/*res.redirect('/index');*/
+        })
+        .catch(err => console.log(err));
+});
+
+/*} else {
+    // validation passed
+    User.findOne({ email: req.body.email })
+        .then(user => {
+            if (user) {
+                console.log("email exists");
+
+                User.findOne({ password: req.body.password })
+                    .then(user => {
+                        if (user) {
+                        console.log("Correct password");
+                        res.sendStatus(200); /*res.redirect('/index');*/
+//user exists
+/*res.render('register', {
+                             errors,
+                            email,
+                            password
+                        });*/
+/*
+                }   })}
             });
         res.send('pass');
     }
-});
+});*/
 
 /*router.get("/", (req,res)=>{
 // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
