@@ -12,6 +12,11 @@ const ProdSchema = new mongoose.Schema({
         required: true
 
     },
+    img1: {
+        type: String,
+        required: true
+
+    },
     s_des: {
         type: String,
         required: true
