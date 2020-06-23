@@ -14,6 +14,36 @@ router.get("/", (req, res) => {
         .catch(err => console.log(err));
 });
 
+router.get("/search", (req, res) => {
+    var q = req.query.q;
+    //full text 
+    // Product.find({
+    //     $text: {
+    //         $search: q
+    //     }
+    // }, {
+    //     _id: 0,
+    //     _v: 0
+    // }, function(err, data) {
+    //     res.json(data);
+    // });
+
+    //PARTIAL TEXT SEARCH
+
+    Prod.find({
+        model_no: {
+            $regex: new RegExp(q)
+        }
+    }, {
+        _id: 0,
+        _v: 0
+    }, function(err, data) {
+        console.log("Partial Search Begins");
+        console.log(data);
+        res.json(data);
+    }).limit(10);
+});
+
 /*kennel.find({}, function(err, result) {
     if (err) {
       res.send(err);

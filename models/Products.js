@@ -12,6 +12,11 @@ const ProdSchema = new mongoose.Schema({
         required: true
 
     },
+    model_no1: {
+        type: String,
+        required: true
+
+    },
     img1: {
         type: String,
         required: true
