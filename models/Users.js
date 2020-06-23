@@ -32,16 +32,6 @@ const UserSchema = new mongoose.Schema({
         required: true
 
     },
-    pincode: {
-        type: Number,
-        required: true
-
-    },
-    dob: {
-        type: Date,
-        required: true
-
-    }
 });
 
 const User = mongoose.model('User', UserSchema, 'User_info');
