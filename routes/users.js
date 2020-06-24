@@ -95,7 +95,7 @@ router.post("/login", (req, res) => {
     User.findOne({ email })
         .then(user => {
             //if user not exist than return status 400
-            console.log("User not exist");
+            //console.log("User not exist");
             if (!user) return res.render('myaccount', { msg: "User not exist" });
 
             //if user exist than compare password
