@@ -790,18 +790,12 @@
                                 </div>
                                 <!-- End Form Group -->
 
-                                <!-- Checkbox -->
-                                <div class="js-form-message mb-3">
-                                    <div class="custom-control custom-checkbox d-flex align-items-center">
-                                        <input type="checkbox" class="custom-control-input" id="rememberCheckbox" name="rememberCheckbox" required
-                                        data-error-class="u-has-error"
-                                        data-success-class="u-has-success">
-                                        <label class="custom-control-label form-label" for="rememberCheckbox">
-                                            Remember me
-                                        </label>
-                                    </div>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Holy guacamole!</strong><% =msg %>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
-                                <!-- End Checkbox -->
 
                                 <!-- Button -->
                                 <div class="mb-1">
@@ -828,6 +822,7 @@
                                 <div class="width-50 height-50 border border-color-1 rounded-circle flex-content-center font-italic bg-white position-absolute">or</div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         <div class="col-md-5 ml-md-auto ml-xl-0 mr-xl-auto">
                             <!-- Title -->
                             <div class="border-bottom border-color-1 mb-6">
@@ -842,6 +837,38 @@
     <div class="col-sm-6 mb-6">
       <div class="js-form-message">
         <label class="form-label">
+=======
+                        <!-- End Button -->
+                    </form>
+                    <br> <br> <br>
+                    <h3 class="font-size-18 mb-3">Sign up today and you will be able to :</h3>
+                    <ul class="list-group list-group-borderless">
+                        <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Speed your way through checkout</li>
+                        <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Track your orders easily</li>
+                        <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Keep a record of all your purchases</li>
+                    </ul>
+                </div>
+                <div class="col-md-1 d-none d-md-block">
+                    <div class="flex-content-center h-100">
+                        <div class="width-1 bg-1 h-100"></div>
+                        <div class="width-50 height-50 border border-color-1 rounded-circle flex-content-center font-italic bg-white position-absolute">or</div>
+                    </div>
+                </div>
+                <div class="col-md-5 ml-md-auto ml-xl-0 mr-xl-auto">
+                    <!-- Title -->
+                    <div class="border-bottom border-color-1 mb-6">
+                        <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Register</h3>
+                    </div>
+                    <p class="text-gray-90 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
+                    <!-- End Title -->
+                    <!-- Contacts Form -->
+                    <form class="js-validate" action="/register" method="post">
+                        <div class="row">
+                            <!-- Input -->
+                            <div class="col-sm-6 mb-6">
+                                <div class="js-form-message">
+                                    <label class="form-label">
+>>>>>>> 99e32f452064b7030297cf0ce0a7d3a801982daf
           Your first name
           <span class="text-danger">*</span>
         </label>

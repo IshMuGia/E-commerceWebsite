@@ -43,6 +43,18 @@ router.get("/search", (req, res) => {
     }).limit(10);
 });
 
+// Brand Shop
+router.post("/brandshop", (req, res) => {
+    Prod.find({ brand: req.body.brand })
+        .then(results => {
+            if (results) {
+                console.log(results);
+                res.render("shop", { results: results });
+            } else { console.log("Empty") }
+        })
+        .catch(err => console.log(err));
+});
+
 /*kennel.find({}, function(err, result) {
     if (err) {
       res.send(err);
@@ -67,7 +79,7 @@ router.get("/", (req, res) => {
 
 router.get("/myaccount", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("myaccount");
+    res.render('myaccount', { msg: "" });
 });
 
 router.get("/shop", (req, res) => {
