@@ -107,7 +107,7 @@ router.post("/login", (req, res) => {
                     //if both match than you can do anything
                 if (data) {
                     console.log("Login success");
-                    return res.redirect('/', { msg: "Login success" });
+                    return res.redirect('/');
                 } else {
                     console.log("Invalid password");
                     return res.render('myaccount', { msg: "Invalid password" });
