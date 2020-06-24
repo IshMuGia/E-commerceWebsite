@@ -7,7 +7,6 @@ router.get("/", (req, res) => {
     Prod.find({}, 'brand s_des img1 mrp -_id')
         .then(results => {
             if (results) {
-                console.log(results);
                 res.render('index', { results: results });
             } else { console.log("Empty") }
         })

@@ -95,8 +95,9 @@ router.post("/login", (req, res) => {
     User.findOne({ email })
         .then(user => {
             //if user not exist than return status 400
+            console.log("User not exist");
             if (!user) return res.render('myaccount', { msg: "User not exist" });
-            
+
             //if user exist than compare password
             //password comes from the user
             //user.password comes from the database
@@ -105,8 +106,10 @@ router.post("/login", (req, res) => {
                 if (err) throw err
                     //if both match than you can do anything
                 if (data) {
-                    return res.render('/', { msg: "Login success" });
+                    console.log("Login success");
+                    return res.redirect('/', { msg: "Login success" });
                 } else {
+                    console.log("Invalid password");
                     return res.render('myaccount', { msg: "Invalid password" });
                 }
             });
