@@ -7,15 +7,6 @@ const passport = require('passport');
 const User = require('../models/Users');
 //const { forwardAuthenticated } = require('../config/auth');
 
-//login
-
-/*
-//register page
-router.get("/register", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("register");
-});
-*/
 //Register handle
 router.post("/", (req, res) => {
     var fname = req.body.fname
@@ -83,6 +74,7 @@ router.post("/", (req, res) => {
         });
     //res.send('pass');
 });
+
 module.exports = router;
 
 /*} else {

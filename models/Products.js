@@ -31,6 +31,23 @@ const ProdSchema = new mongoose.Schema({
         type: Number,
         required: true
 
+    },
+    a_1: {
+        type: String,
+        required: true
+
+
+    },
+    a_2: {
+        type: String,
+        required: true
+
+
+    },
+    a_3: {
+        type: String,
+        required: true
+
     }
 });
 
