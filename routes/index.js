@@ -44,7 +44,7 @@ router.get("/search", (req, res) => {
 });
 
 // Brand Shop
-router.post("/brandshop", (req, res) => {
+router.get("/brandshop", (req, res) => {
     Prod.find({ brand: req.body.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 -_id' )
         .then(results => {
             if (results) {
@@ -122,7 +122,9 @@ router.get("/", (req, res) => {
 
 router.get("/myaccount", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render('myaccount', { msg: "" });
+    const msg = "Enter the details";
+
+    res.render('myaccount', { msg: msg });
 });
 
 router.get("/shop", (req, res) => {
