@@ -137,6 +137,11 @@ router.get("/product", (req, res) => {
     res.render("product");
 });
 
+router.get("/checkout", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("checkout");
+});
+
 router.get("/cart", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     res.render("cart");
