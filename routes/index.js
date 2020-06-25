@@ -44,8 +44,8 @@ router.get("/search", (req, res) => {
 });
 
 // Brand Shop
-router.post("/brandshop", (req, res) => {
-    Prod.find({ brand: req.body.brand })
+router.get("/brandshop", (req, res) => {
+    Prod.find({ brand: req.body.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 -_id')
         .then(results => {
             if (results) {
                 console.log(results);
@@ -54,6 +54,49 @@ router.post("/brandshop", (req, res) => {
         })
         .catch(err => console.log(err));
 });
+
+// SubBrand Shop
+router.post("/subbrandshop", (req, res) => {
+    Prod.find({ sub_brand: req.body.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 -_id')
+        .then(results => {
+            if (results) {
+                console.log(results);
+                res.render("shop", { results: results });
+            } else { console.log("Empty") }
+        })
+        .catch(err => console.log(err));
+});
+
+// Brand by Attribute Shop
+/*router.post("/brandbyattributeshop", (req, res, next) => {
+    var fltrbrand = req.body.brand;
+    var fltrsub_brand = req.body.sub_brand;
+    var fltrcolour = req.body.colour;
+    if(fltrbrand !='' && fltrsub_brand !='' && fltrcolour != ''){
+        var filterParameter = { $and:[{ brand:fltrbrand},
+    {$and:[{sub_brand:fltrbrand},{colour:fltrcolour}]}   
+    ]
+
+        }
+    }else if (fltrbrand !='' && fltrsub_brand =='' && fltrcolour != ''){
+        var filterParameter = { $and:[{ brand:fltrbrand},{colour:fltrcolour}]
+            }   
+
+    }else if (fltrbrand =='' && fltrsub_brand !='' && fltrcolour != ''){
+        var filterParameter = { $and:[{ sub_brand:fltrsub_brand},{colour:fltrcolour}]
+            }   
+    }else if (fltrbrand !='' && fltrsub_brand !='' && fltrcolour == ''){
+        var filterParameter = { $and:[{ brand:fltrbrand},{sub_brand:fltrsub_brand}]
+            } 
+    }else{
+        var filterParameter={}
+    }
+    var ProdFltr = Prod.find(filterParameter);
+    ProdFltr.exec(function(err,data){
+        if(err) throw err;
+        res.render("shop", { results: results });
+        });
+});*/
 
 /*kennel.find({}, function(err, result) {
     if (err) {
@@ -79,7 +122,7 @@ router.get("/", (req, res) => {
 
 router.get("/myaccount", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    const msg = " ";
+    const msg = "Enter the details";
 
     res.render('myaccount', { msg: msg });
 });
