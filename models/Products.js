@@ -49,6 +49,16 @@ const ProdSchema = new mongoose.Schema({
         required: true
 
     },
+    a_4: {
+        type: String,
+        required: true
+
+    },
+    a_5: {
+        type: String,
+        required: true
+
+    },
     colour: {
         type: String,
         required: true
