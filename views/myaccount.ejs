@@ -715,12 +715,14 @@
                     </div>
                     <p class="text-gray-90 mb-4">Welcome back! Sign in to your account.</p>
                     <!-- End Title -->
+                    <% if (msg!="") {%>
                     <div class="alert alert-primary alert-dismissible fade show" role="alert">
                         <strong><%=msg %></strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <% } %>
                     <form class="js-validate" novalidate="novalidate" action="/login" method="post">
                         <!-- Form Group -->
                         <div class="js-form-message form-group">
@@ -770,12 +772,14 @@
                     </div>
                     <p class="text-gray-90 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
                     <!-- End Title -->
+                    <% if (msg!="") {%>
                     <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                        <strong><%=msg1 %></strong>
+                        <strong><%=msg %></strong>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <% } %>
                     <!-- Contacts Form -->
                     <form class="js-validate" action="/register" method="post">
                         <div class="row">
