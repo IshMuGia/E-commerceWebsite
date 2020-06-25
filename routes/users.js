@@ -44,6 +44,9 @@ router.post("/", (req, res) => {
                     email,
                     password
                 });
+                const msg = "User already exists!";
+                res.render('myaccount', { msg1: msg });
+
                 console.log("email exists");
                 //user exists
                 /*errors.push({ msg: 'Email is already registered!' });
