@@ -113,7 +113,7 @@ router.get("/search", (req, res) => {
 
 // Brand Shop
 router.get("/brandshop", (req, res) => {
-    Prod.find({ brand: req.body.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 -_id')
+    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id' )
         .then(results => {
             if (results) {
                 console.log(results);
@@ -124,8 +124,8 @@ router.get("/brandshop", (req, res) => {
 });
 
 // SubBrand Shop
-router.post("/subbrandshop", (req, res) => {
-    Prod.find({ sub_brand: req.body.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 -_id')
+router.get("/subbrandshop", (req, res) => {
+    Prod.find({ sub_brand: req.query.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id')
         .then(results => {
             if (results) {
                 console.log(results);
@@ -190,7 +190,7 @@ router.get("/", (req, res) => {
 
 router.get("/myaccount", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    const msg = "Enter the details";
+    const msg = "";
 
     res.render('myaccount', { msg: msg });
 });
@@ -203,6 +203,11 @@ router.get("/shop", (req, res) => {
 router.get("/product", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     res.render("product");
+});
+
+router.get("/checkout", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("checkout");
 });
 
 router.get("/cart", (req, res) => {
