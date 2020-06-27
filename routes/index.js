@@ -2,6 +2,8 @@ const express = require('express');
 const router = express();
 const mongoose = require('mongoose');
 const Prod = require('../models/Products');
+const Rev = require("../models/Review");
+
 
 router.get("/", (req, res) => {
     Prod.find({}, 'brand s_des img1 mrp -_id')
@@ -12,6 +14,72 @@ router.get("/", (req, res) => {
         })
         .catch(err => console.log(err));
 });
+
+router.post("/product", (req, res) => {
+    const id = req.body.id;
+    console.log(id)
+
+
+    // Prod.aggregate([{
+    //             $lookup: {
+
+    //                 from: 'product_review',
+    //                 localField: 'review',
+    //                 foreignField: '_id',
+    //                 as: 'Reviews'
+
+    //             }
+    //         },
+    //         {
+    //             $match: { model_no: 'id' }
+    //         }
+    //     ])
+    //     .unwind('tags')
+    //     .exec(function(err, result) {
+
+    //         if (err)
+    //             throw err;
+    //         console.log(result);
+    //         res.send(result);
+
+    //     });
+
+
+    Prod.find({ model_no: id }, 'brand model_no')
+        .exec()
+        .then(docs1 => {
+
+            Rev.find({ product: id })
+                .exec()
+                .then(docs2 => {
+                    const docs = docs1.concat(docs2)
+                    console.log(docs)
+                    res.status(200).json({ results: docs });
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+
+
+
+    // Prod.find({}, 'brand s_des img1 mrp -_id')
+    //     .then(results => {
+    //         if (results) {
+    //             res.render('index', { results: results });
+    //         } else { console.log("Empty") }
+    //     })
+    //     .catch(err => console.log(err));
+});
+
 
 router.get("/search", (req, res) => {
     var q = req.query.q;

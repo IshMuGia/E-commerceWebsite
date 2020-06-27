@@ -8,6 +8,13 @@ const session = require('express-session');
 //User Model
 const User = require('./models/Users');
 
+//Product Model
+const Product = require('./models/Products');
+
+//Review
+const Rev = require("./models/Rev");
+
+
 
 const app = express();
 
