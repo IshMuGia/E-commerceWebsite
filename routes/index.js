@@ -123,7 +123,6 @@ router.get("/", (req, res) => {
 router.get("/myaccount", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     const msg = "";
-
     res.render('myaccount', { msg: msg });
 });
 
