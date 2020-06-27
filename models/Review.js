@@ -12,6 +12,16 @@ const RevSchema = new mongoose.Schema({
         required: true
 
     },
+    fname: {
+        type: String,
+        required: true
+
+    },
+    lname: {
+        type: String,
+        required: true
+
+    },
     product: {
         type: String,
         required: true

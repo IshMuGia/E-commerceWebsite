@@ -6,7 +6,7 @@ const Rev = require("../models/Review");
 
 
 router.get("/", (req, res) => {
-    Prod.find({}, 'brand s_des img1 mrp -_id')
+    Prod.find({}, 'brand s_des img1 mrp model_no -_id')
         .then(results => {
             if (results) {
                 res.render('index', { results: results });
@@ -14,38 +14,27 @@ router.get("/", (req, res) => {
         })
         .catch(err => console.log(err));
 });
-
-router.post("/product", (req, res) => {
-    const id = req.body.id;
-    console.log(id)
-
-
-    // Prod.aggregate([{
-    //             $lookup: {
-
-    //                 from: 'product_review',
-    //                 localField: 'review',
-    //                 foreignField: '_id',
-    //                 as: 'Reviews'
-
-    //             }
-    //         },
-    //         {
-    //             $match: { model_no: 'id' }
-    //         }
-    //     ])
-    //     .unwind('tags')
-    //     .exec(function(err, result) {
-
-    //         if (err)
-    //             throw err;
-    //         console.log(result);
-    //         res.send(result);
-
-    //     });
-
-
-    Prod.find({ model_no: id }, 'brand model_no')
+router.get("/list", (req, res) => {
+    Prod.find().distinct('brand')
+        .then(results1 => {
+            if (results1) {
+                console.log("Unique brands: " + results1)
+                // res.render("index", { results1: results1 });
+    {
+    Prod.find().distinct('sub_brand')
+        .then(results2 => {
+            if (results2) {
+                console.log("Unique sub_brands: " +results2)
+                res.render("index", { results2: results2 },  { results1: results1 });
+    }})}
+            } else { console.log("Empty") }
+        })
+        .catch(err => console.log(err));
+});
+router.get("/dproduct", (req, res) => {
+    const id = req.query.id;
+    console.log(id) 
+    Prod.find({ model_no: id })
         .exec()
         .then(docs1 => {
 
@@ -54,7 +43,7 @@ router.post("/product", (req, res) => {
                 .then(docs2 => {
                     const docs = docs1.concat(docs2)
                     console.log(docs)
-                    res.status(200).json({ results: docs });
+                    res.render('product',{ results: docs });
                 })
                 .catch(err => {
                     res.status(500).json({
@@ -68,16 +57,32 @@ router.post("/product", (req, res) => {
                 error: err
             });
         });
+});
 
-
-
-    // Prod.find({}, 'brand s_des img1 mrp -_id')
-    //     .then(results => {
-    //         if (results) {
-    //             res.render('index', { results: results });
-    //         } else { console.log("Empty") }
-    //     })
-    //     .catch(err => console.log(err));
+router.get("/addtocart", (req, res) => {
+    const email = req.query.email;
+    console.log(email)   
+Cart.find({ model_no:email }, 'email model_no')
+        .exec()
+        .then(docs1 => {
+            Prod.find({ product: id })
+                .exec()
+                .then(docs2 => {
+                    const docs = docs1.concat(docs2)
+                    console.log(docs)
+                    res.status(200).json({ results: docs });
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
 });
 
 
@@ -113,7 +118,7 @@ router.get("/search", (req, res) => {
 
 // Brand Shop
 router.get("/brandshop", (req, res) => {
-    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id' )
+    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id' )
         .then(results => {
             if (results) {
                 console.log(results);
@@ -125,7 +130,7 @@ router.get("/brandshop", (req, res) => {
 
 // SubBrand Shop
 router.get("/subbrandshop", (req, res) => {
-    Prod.find({ sub_brand: req.query.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id')
+    Prod.find({ sub_brand: req.query.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id')
         .then(results => {
             if (results) {
                 console.log(results);
