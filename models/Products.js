@@ -12,7 +12,7 @@ const ProdSchema = new mongoose.Schema({
         required: true
 
     },
-    model_no1: {
+    model_no: {
         type: String,
         required: true
 
@@ -62,6 +62,10 @@ const ProdSchema = new mongoose.Schema({
     colour: {
         type: String,
         required: true
+    },
+    review: {
+        type: mongoose.Types.ObjectId,
+        ref: "Review"
     }
 });
 
