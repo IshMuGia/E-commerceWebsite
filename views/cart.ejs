@@ -683,29 +683,32 @@
                                 </div>
                             </div>
                             <!-- End Vertical Menu -->
-                            <!-- Search Bar -->
-                            <div class="col d-none d-xl-block">
-                                <form class="js-focus-state" action="/search" method="post"> 
-                                    <label class="sr-only" for="searchproduct">Search</label>
+                            <!-- Search bar -->
+                            <div class="col align-self-center">
+                                <!-- Search-Form -->
+                                <form class="js-focus-state">
+                                    <label class="sr-only" for="searchProduct">Search</label>
                                     <div class="input-group">
-                                        <select class="form-control js-select selectpicker dropdown-select py-0 font-size-15" data-live-search="true" name="word" id="word" 
-                                        placeholder="Search for Products" required  data-style="form-control font-weight-normal border-color-primary border-right-0 height-40 border-width-2 rounded-left-pill border-primary">
-                                        <option value="">Search for Products</option>
-                                        <% for (var j=0; j<28; j++){%>
-                                        <option value="<%=results[j]%>"><%=results[j]%></option>
-                                        <%}%>
-                                        </select>
-                                    
+                                        <input type="email" class="form-control py-2 pl-5 font-size-15 border-0 height-40 rounded-left-pill" name="email" id="searchProduct" placeholder="Search for Products" aria-label="Search for Products" aria-describedby="searchProduct1" required>
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary height-40 py-2 px-3 rounded-right-pill" type="submit" id="searchProduct1">
+                                            <!-- Select -->
+                                            <select class="js-select selectpicker dropdown-select custom-search-categories-select"
+                                                data-style="btn height-40 text-gray-60 font-weight-normal border-0 rounded-0 bg-white px-5 py-2">
+                                                <option value="one" selected>All Categories</option>
+                                                <option value="two">Two</option>
+                                                <option value="three">Three</option>
+                                                <option value="four">Four</option>
+                                            </select>
+                                            <!-- End Select -->
+                                            <button class="btn btn-dark height-40 py-2 px-3 rounded-right-pill" type="button" id="searchProduct1">
                                                 <span class="ec ec-search font-size-24"></span>
                                             </button>
                                         </div>
                                     </div>
                                 </form>
+                                <!-- End Search-Form -->
                             </div>
-                        
-                            <!-- End Search Bar -->
+                            <!-- End Search bar -->
                             <!-- Header Icons -->
                             <div class="col-md-auto align-self-center">
                                 <div class="d-flex">
