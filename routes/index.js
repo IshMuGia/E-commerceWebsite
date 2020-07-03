@@ -1,18 +1,18 @@
 const express = require('express');
-const router = express();
+const router = express.Router();
 const mongoose = require('mongoose');
 const Prod = require('../models/Products');
 const Rev = require("../models/Review");
 
 
 router.get("/", (req, res) => {
-    Prod.find({}, 'brand s_des img1 mrp -_id')
-        .then(results => {
-            if (results) {
-                res.render('index', { results: results });
-            } else { console.log("Empty") }
-        })
-        .catch(err => console.log(err));
+    console.log('hello')
+    console.log(req.session.email)
+    if (req.session.email) {
+        res.redirect('/logged');
+    } else {
+        res.redirect("/myaccount");
+    }
 });
 
 router.post("/product", (req, res) => {
@@ -52,6 +52,8 @@ router.post("/product", (req, res) => {
             Rev.find({ product: id })
                 .exec()
                 .then(docs2 => {
+                    console.log(docs2.length)
+
                     const docs = docs1.concat(docs2)
                     console.log(docs)
                     res.status(200).json({ results: docs });
@@ -113,7 +115,7 @@ router.get("/search", (req, res) => {
 
 // Brand Shop
 router.get("/brandshop", (req, res) => {
-    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id' )
+    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id')
         .then(results => {
             if (results) {
                 console.log(results);
@@ -183,9 +185,28 @@ router.get("/login", (req, res) => {
     res.render("login");
 });
 
-router.get("/", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("index");
+// router.get("/", (req, res) => {
+//     console.log('hello')
+//     console.log(req.session.email)
+//     if (req.session.email) {
+//         res.redirect('/logged');
+//     } else {
+//         res.redirect("/myaccount");
+//     }
+//     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+// });
+
+router.get("/logged", (req, res) => {
+    if (req.session.email) {
+        Prod.find({}, 'brand s_des img1 mrp -_id')
+            .then(results => {
+                if (results) {
+                    res.render('index', { results: results });
+                } else { console.log("Empty") }
+            })
+            .catch(err => console.log(err));
+    }
+
 });
 
 router.get("/myaccount", (req, res) => {
@@ -225,9 +246,9 @@ router.get("/wishlist", (req, res) => {
     res.render("wishlist");
 });
 
-router.get("/", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("index");
-});
+// router.get("/", (req, res) => {
+//     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+//     res.render("index");
+// });
 
 module.exports = router;

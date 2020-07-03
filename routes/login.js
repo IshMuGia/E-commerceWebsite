@@ -10,6 +10,8 @@ const User = require('../models/Users');
 router.post("/", (req, res) => {
     var email = req.body.email
     var password = req.body.password
+    req.session.email = email
+    req.session.password = password
     console.log(req.body);
     User.findOne({ email })
         .then(user => {
@@ -29,7 +31,7 @@ router.post("/", (req, res) => {
                     return res.redirect('/');
                 } else {
                     const msg = "Invalid password";
-            return res.render('myaccount', { msg: msg });
+                    return res.render('myaccount', { msg: msg });
                 }
             });
             /*if (user.password != password) return res.status(401).send({ msg: 'Invalid email or password' });

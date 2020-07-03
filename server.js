@@ -15,7 +15,6 @@ const Product = require('./models/Products');
 const Rev = require("./models/Rev");
 
 
-
 const app = express();
 
 // DB Config
@@ -42,14 +41,15 @@ app.use(bodyParser.urlencoded({
 }));
 //app.use(express.urlencoded({ extended: true }));
 
-/*
 //Express session 
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: false
 }));
 
+
+/*
 //connect flash
 app.use(flash());
 
