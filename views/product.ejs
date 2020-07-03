@@ -768,19 +768,19 @@
                                 data-arrow-right-classes="fas fa-arrow-right u-slick__arrow-classic-inner u-slick__arrow-classic-inner--right mr-lg-2 mr-xl-4"
                                 data-nav-for="#sliderSyncingThumb">
                                 <div class="js-slide">
-                                    <img class="img-fluid" src="/img/720X660/img1.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img1%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide">
-                                    <img class="img-fluid" src="/img/720X660/img2.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img2%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide">
-                                    <img class="img-fluid" src="/img/720X660/img3.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img3%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide">
-                                    <img class="img-fluid" src="/img/720X660/img4.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img4%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide">
-                                    <img class="img-fluid" src="/img/720X660/img5.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img5%>" alt="<%=results[0].s_des%>">
                                 </div>
                             </div>
 
@@ -790,26 +790,28 @@
                                 data-is-thumbs="true"
                                 data-nav-for="#sliderSyncingNav">
                                 <div class="js-slide" style="cursor: pointer;">
-                                    <img class="img-fluid" src="/img/720X660/img1.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img1%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide" style="cursor: pointer;">
-                                    <img class="img-fluid" src="/img/720X660/img2.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img2%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide" style="cursor: pointer;">
-                                    <img class="img-fluid" src="/img/720X660/img3.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img3%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide" style="cursor: pointer;">
-                                    <img class="img-fluid" src="/img/720X660/img4.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img4%>" alt="<%=results[0].s_des%>">
                                 </div>
                                 <div class="js-slide" style="cursor: pointer;">
-                                    <img class="img-fluid" src="/img/720X660/img5.jpg" alt="Image Description">
+                                    <img class="img-fluid" src="<%=results[0].img5%>" alt="<%=results[0].s_des%>">
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4 col-xl-4 mb-md-6 mb-lg-0">
                             <div class="mb-2">
-                                <a href="#" class="font-size-12 text-gray-5 mb-2 d-inline-block">Headphones</a>
-                                <h2 class="font-size-25 text-lh-1dot2">Ultra Wireless S50 Headphones S50 with Bluetooth</h2>
+                                <p class="font-size-12 text-gray-5 mb-2 d-inline-block"><%=results[0].brand%></p>
+                                <h2 class="font-size-25 text-lh-1dot2"><%=results[0].model_no%></h2>
+                                <p class="font-size-14 text-gray-5 mb-2 d-inline-block"><%=results[0].sub_brand%></p>
+
                                 <div class="mb-2">
                                     <a class="d-inline-flex align-items-center small font-size-15 text-lh-1" href="#">
                                         <div class="text-warning mr-2">
@@ -822,17 +824,13 @@
                                         <span class="text-secondary font-size-13">(3 customer reviews)</span>
                                     </a>
                                 </div>
-                                <a href="#" class="d-inline-block max-width-150 ml-n2 mb-2"><img class="img-fluid" src="/img/200X60/img1.png" alt="Image Description"></a>
+                                <a href="#" class="d-inline-block max-width-150 ml-n2 mb-2"><img class="img-fluid" src="<%=results[0].img1%>" alt="Image Description"></a>
+                                <h5><%=results[0].s_des%></h5>
                                 <div class="mb-2">
-                                    <ul class="font-size-14 pl-3 ml-1 text-gray-110">
-                                        <li>4.5 inch HD Touch Screen (1280 x 720)</li>
-                                        <li>Android 4.4 KitKat OS</li>
-                                        <li>1.4 GHz Quad Core™ Processor</li>
-                                        <li>20 MP Electro and 28 megapixel CMOS rear camera</li>
-                                    </ul>
+                                    <p><%=results[0].l_des%></p> 
                                 </div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                                <p><strong>SKU</strong>: FW511948218</p>
+                                
+                                <p><strong>Item code</strong>: <%=results[0].v_item_code%></p>
                             </div>
                         </div>
                         <div class="mx-md-auto mx-lg-0 col-md-6 col-lg-4 col-xl-3">
@@ -840,7 +838,7 @@
                                 <div class="card p-5 border-width-2 border-color-1 borders-radius-17">
                                     <div class="text-gray-9 font-size-14 pb-2 border-color-1 border-bottom mb-3">Availability: <span class="text-green font-weight-bold">26 in stock</span></div>
                                     <div class="mb-3">
-                                        <div class="font-size-36">$685.00</div>
+                                        <div class="font-size-36">₹<%=results[0].mrp%></div>
                                     </div>
                                     <div class="mb-3">
                                         <h6 class="font-size-14">Quantity</h6>
@@ -895,14 +893,14 @@
                 <div class="container">
                     <div class="js-scroll-nav">
                         <div class="bg-white pt-4 pb-6 px-xl-11 px-md-5 px-4 mb-6 overflow-hidden">
-                            <div id="Description" class="mx-md-2">
+                            <div id="Features" class="mx-md-2">
                                 <div class="position-relative mb-6">
                                     <ul class="nav nav-classic nav-tab nav-tab-lg justify-content-xl-center mb-6 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble border-lg-down-bottom-0 pb-1 pb-xl-0 mb-n1 mb-xl-0">
 
                                         <li class="nav-item flex-shrink-0 flex-xl-shrink-1 z-index-2">
-                                            <a class="nav-link active" href="#Description">
+                                            <a class="nav-link active" href="#Features">
                                                 <div class="d-md-flex justify-content-md-center align-items-md-center">
-                                                    Description
+                                                    Features
                                                 </div>
                                             </a>
                                         </li>
@@ -923,32 +921,27 @@
                                     </ul>
                                 </div>
                                 <div class="mx-md-4 pt-1">
-                                    <h3 class="font-size-24 mb-3">Perfectly Done</h3>
-                                    <p>Praesent ornare, ex a interdum consectetur, lectus diam sodales elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem semper viverra. In lobortis egestas massa. Nam nec massa nisi. Suspendisse potenti. Quisque suscipit vulputate dui quis volutpat. Ut id elit facilisis, feugiat est in, tempus lacus. Ut ultrices dictum metus, a ultricies ex vulputate ac. Ut id cursus tellus, non tempor quam. Morbi porta diam nisi, id finibus nunc tincidunt eu.</p>
                                     <div class="row">
                                         <div class="col-md-6">
+                                            
                                             <div class="pt-lg-8 pt-xl-10">
-                                                <h3 class="font-size-24 mb-3">Wireless</h3>
-                                                <p class="mb-6">Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.</p>
-                                                <h3 class="font-size-24 mb-3">Fresh Design</h3>
-                                                <p class="mb-6">Integer bibendum aliquet ipsum, in ultrices enim sodales sed. Quisque ut urna vitae lacus laoreet malesuada eu at massa. Pellentesque nibh augue, pellentesque nec dictum vel, pretium a arcu. Duis eu urna suscipit, lobortis elit quis, ullamcorper massa.</p>
-                                                <h3 class="font-size-24 mb-3">Fabolous Sound</h3>
-                                                <p class="mb-6">Cras rutrum, nibh a sodales accumsan, elit sapien ultrices sapien, eget semper lectus ex congue elit. Nullam dui elit, fermentum a varius at, iaculis non dolor. In hac habitasse platea dictumst.</p>
+                                                <ul class="font-size-14 pl-3 ml-1 text-gray-110">
+                                                    <li><%=results[0].a_1%></li>
+                                                    <br>
+                                                    <li><%=results[0].a_2%></li>
+                                                    <br>
+                                                    <li><%=results[0].a_3%></li>
+                                                    <br>
+                                                    <li><%=results[0].a_4%></li>
+                                                    <br>
+                                                    <li><%=results[0].a_5%></li>
+                                                    <br>
+                                                    <li><%=results[0].a_6%></li>
+                                                </ul>
                                             </div>
                                         </div>
                                         <div class="col-md-6 text-right">
-                                            <img class="img-fluid mr-n4 mr-md-n10 mr-xl-n15" src="/img/720X660/img1.jpg" alt="Image Description">
-                                        </div>
-                                        <div class="col-md-6 text-left">
-                                            <img class="img-fluid ml-n4 ml-md-n10 ml-xl-n15" src="/img/720X660/img2.jpg" alt="Image Description">
-                                        </div>
-                                        <div class="col-md-6 align-self-center">
-                                            <div class="pt-lg-8 pt-xl-10 text-right">
-                                                <h3 class="font-size-24 mb-3">Inteligent Bass</h3>
-                                                <p class="mb-6">Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.</p>
-                                                <h3 class="font-size-24 mb-3">Battery Life</h3>
-                                                <p class="mb-6">Integer bibendum aliquet ipsum, in ultrices enim sodales sed. Quisque ut urna vitae lacus laoreet malesuada eu at massa. Pellentesque nibh augue, pellentesque nec dictum vel, pretium a arcu. Duis eu urna suscipit, lobortis elit quis, ullamcorper massa.</p>
-                                            </div>
+                                            <img class="img-fluid mr-n4 mr-md-n10 mr-xl-n15" src="<%=results[0].img3%>" alt="Image Feature">
                                         </div>
                                     </div>
                                     <ul class="nav flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble">
@@ -967,9 +960,9 @@
                                     <ul class="nav nav-classic nav-tab nav-tab-lg justify-content-xl-center mb-6 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble border-lg-down-bottom-0 pb-1 pb-xl-0 mb-n1 mb-xl-0">
                                         
                                         <li class="nav-item flex-shrink-0 flex-xl-shrink-1 z-index-2">
-                                            <a class="nav-link" href="#Description">
+                                            <a class="nav-link" href="#Features">
                                                 <div class="d-md-flex justify-content-md-center align-items-md-center">
-                                                    Description
+                                                    Features
                                                 </div>
                                             </a>
                                         </li>
@@ -995,28 +988,24 @@
                                             <tbody>
                                                 <tr>
                                                     <th class="px-4 px-xl-5 border-top-0">Weight</th>
-                                                    <td class="border-top-0">7.25kg</td>
+                                                    <td class="border-top-0"><%=results[0].p_weight%> kg</td>
                                                 </tr>
                                                 <tr>
                                                     <th class="px-4 px-xl-5">Dimensions</th>
-                                                    <td>90 x 60 x 90 cm</td>
+                                                    <td><%=results[0].p_len%> x <%=results[0].p_width%> x <%=results[0].p_height%> cm</td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="px-4 px-xl-5">Size</th>
-                                                    <td>One Size Fits all</td>
+                                                    <th class="px-4 px-xl-5">Colour</th>
+                                                    <td><%=results[0].colour%></td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="px-4 px-xl-5">color</th>
-                                                    <td>Black with Red, White with Gold</td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="px-4 px-xl-5">Guarantee</th>
-                                                    <td>5 years</td>
+                                                    <th class="px-4 px-xl-5">Warranty</th>
+                                                    <td><%=results[0].warranty%> months</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                     </div>
-                                    <h3 class="font-size-18 mb-4">Technical Specifications</h3>
+                                    <!-- <h3 class="font-size-18 mb-4">Technical Specifications</h3>
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
@@ -1094,8 +1083,8 @@
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
-                                </div>
+                                    </div> -->
+                                </div> 
                             </div>
                         </div>
                         <div class="bg-white py-4 px-xl-11 px-md-5 px-4 mb-6">
@@ -1104,9 +1093,9 @@
                                     <ul class="nav nav-classic nav-tab nav-tab-lg justify-content-xl-center mb-6 flex-nowrap flex-xl-wrap overflow-auto overflow-xl-visble border-lg-down-bottom-0 pb-1 pb-xl-0 mb-n1 mb-xl-0">
                                         
                                         <li class="nav-item flex-shrink-0 flex-xl-shrink-1 z-index-2">
-                                            <a class="nav-link" href="#Description">
+                                            <a class="nav-link" href="#Features">
                                                 <div class="d-md-flex justify-content-md-center align-items-md-center">
-                                                    Description
+                                                    Features
                                                 </div>
                                             </a>
                                         </li>
@@ -1248,56 +1237,32 @@
                                         <div class="col-md-6">
                                             <h3 class="font-size-18 mb-5">Add a review</h3>
                                             <!-- Form -->
-                                            <form class="js-validate">
-                                                <div class="row align-items-center mb-4">
+                                            <form class="js-validate" action="/review" method="post" >                       
+                                                    <div class="row align-items-center mb-4">
                                                     <div class="col-md-4 col-lg-3">
-                                                        <label for="rating" class="form-label mb-0">Your Review</label>
+                                                        <label for="rating" class="form-label mb-0">Your Rating </label>
                                                     </div>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <a href="#" class="d-block">
-                                                            <div class="text-warning text-ls-n2 font-size-16">
-                                                                <small class="far fa-star text-muted"></small>
-                                                                <small class="far fa-star text-muted"></small>
-                                                                <small class="far fa-star text-muted"></small>
-                                                                <small class="far fa-star text-muted"></small>
-                                                                <small class="far fa-star text-muted"></small>
+                                                    <div class="border rounded-pill py-2 w-md-60 height-35 px-3 border-color-1">
+                                                        <div class=" row align-items-center">
+                                                            <div class="col">
+                                                                <input class="form-control h-auto border-0 rounded p-0 shadow-none" name="rating" type="number" min="1" max="5" value="5">
                                                             </div>
-                                                        </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="js-form-message form-group mb-3 row">
                                                     <div class="col-md-4 col-lg-3">
-                                                        <label for="descriptionTextarea" class="form-label">Your Review</label>
+                                                        <label for="descriptionTextarea" class="form-label">Your Comments</label>
                                                     </div>
                                                     <div class="col-md-8 col-lg-9">
-                                                        <textarea class="form-control" rows="3" id="descriptionTextarea"
+                                                        <textarea name="comment" class="form-control" rows="3" id="descriptionTextarea"
                                                         data-msg="Please enter your message."
                                                         data-error-class="u-has-error"
                                                         data-success-class="u-has-success"></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="js-form-message form-group mb-3 row">
-                                                    <div class="col-md-4 col-lg-3">
-                                                        <label for="inputName" class="form-label">Name <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input type="text" class="form-control" name="name" id="inputName" aria-label="Alex Hecker" required
-                                                        data-msg="Please enter your name."
-                                                        data-error-class="u-has-error"
-                                                        data-success-class="u-has-success">
-                                                    </div>
-                                                </div>
-                                                <div class="js-form-message form-group mb-3 row">
-                                                    <div class="col-md-4 col-lg-3">
-                                                        <label for="emailAddress" class="form-label">Email <span class="text-danger">*</span></label>
-                                                    </div>
-                                                    <div class="col-md-8 col-lg-9">
-                                                        <input type="email" class="form-control" name="emailAddress" id="emailAddress" aria-label="alexhecker@pixeel.com" required
-                                                        data-msg="Please enter a valid email address."
-                                                        data-error-class="u-has-error"
-                                                        data-success-class="u-has-success">
-                                                    </div>
-                                                </div>
+                                                <input class="form-control" name= "id" type="hidden" id="id" value="<%=results[0].model_no%>">
+
                                                 <div class="row">
                                                     <div class="offset-md-4 offset-lg-3 col-auto">
                                                         <button type="submit" class="btn btn-primary-dark btn-wide transition-3d-hover">Add Review</button>
@@ -1308,76 +1273,32 @@
                                         </div>
                                     </div>
                                     <!-- Review -->
-                                    <div class="border-bottom border-color-1 pb-4 mb-4">
+
+                                    <% var j=1; while (results[j]){%>
+                                        <div class="border-bottom border-color-1 pb-4 mb-4">
                                         <!-- Review Rating -->
-                                        <div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
-                                            <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="far fa-star text-muted"></small>
-                                                <small class="far fa-star text-muted"></small>
-                                            </div>
-                                        </div>
-                                        <!-- End Review Rating -->
+<div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
+    <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
+        <% for (var i=0; i<results[j].rating; i++){%>
+            <small class="fas fa-star"></small>
+            <%}%>
+            <% for (var i=0; i<5-results[j].rating; i++){%>
+        <small class="far fa-star text-muted"></small>
+        <%}%>
+    </div>
+</div>
+<!-- End Review Rating -->
 
-                                        <p class="text-gray-90">Fusce vitae nibh mi. Integer posuere, libero et ullamcorper facilisis, enim eros tincidunt orci, eget vestibulum sapien nisi ut leo. Cras finibus vel est ut mollis. Donec luctus condimentum ante et euismod.</p>
+<p class="text-gray-90"><%=results[j].comment%></p>
 
-                                        <!-- Reviewer -->
-                                        <div class="mb-2">
-                                            <strong>John Doe</strong>
-                                            <span class="font-size-13 text-gray-23">- April 3, 2019</span>
-                                        </div>
-                                        <!-- End Reviewer -->
+<!-- Reviewer -->
+<div class="mb-2">
+    <strong><%=results[j].fname%> <%=results[j].lname%></strong>
+    <span class="font-size-13 text-gray-23">- April 3, 2019</span>
+</div>
+<!-- End Reviewer -->
                                     </div>
-                                    <!-- End Review -->
-                                    <!-- Review -->
-                                    <div class="border-bottom border-color-1 pb-4 mb-4">
-                                        <!-- Review Rating -->
-                                        <div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
-                                            <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                            </div>
-                                        </div>
-                                        <!-- End Review Rating -->
-
-                                        <p class="text-gray-90">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse eget facilisis odio. Duis sodales augue eu tincidunt faucibus. Etiam justo ligula, placerat ac augue id, volutpat porta dui.</p>
-
-                                        <!-- Reviewer -->
-                                        <div class="mb-2">
-                                            <strong>Anna Kowalsky</strong>
-                                            <span class="font-size-13 text-gray-23">- April 3, 2019</span>
-                                        </div>
-                                        <!-- End Reviewer -->
-                                    </div>
-                                    <!-- End Review -->
-                                    <!-- Review -->
-                                    <div class="pb-4 mb-4">
-                                        <!-- Review Rating -->
-                                        <div class="d-flex justify-content-between align-items-center text-secondary font-size-1 mb-2">
-                                            <div class="text-warning text-ls-n2 font-size-16" style="width: 80px;">
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="fas fa-star"></small>
-                                                <small class="far fa-star text-muted"></small>
-                                            </div>
-                                        </div>
-                                        <!-- End Review Rating -->
-
-                                        <p class="text-gray-90">Sed id tincidunt sapien. Pellentesque cursus accumsan tellus, nec ultricies nulla sollicitudin eget. Donec feugiat orci vestibulum porttitor sagittis.</p>
-
-                                        <!-- Reviewer -->
-                                        <div class="mb-2">
-                                            <strong>Peter Wargner</strong>
-                                            <span class="font-size-13 text-gray-23">- April 3, 2019</span>
-                                        </div>
-                                        <!-- End Reviewer -->
-                                    </div>
+                                    <%j=j+1;}%>
                                     <!-- End Review -->
                                 </div>
                             </div>
@@ -1733,15 +1654,15 @@
         </footer>
         <!-- ========== END FOOTER ========== -->
 
-        <!-- Go to Top -->
-        <a class="js-go-to u-go-to" href="#"
-            data-position='{"bottom": 15, "right": 15 }'
-            data-type="fixed"
-            data-offset-top="400"
-            data-compensation="#header"
-            data-show-effect="slideInUp"
-            data-hide-effect="slideOutDown">
-            <span class="fas fa-arrow-up u-go-to__inner"></span>
-        </a>
-        <!-- End Go to Top -->
+         <!-- Go to Top -->
+         <a class="js-go-to u-go-to" href="#"
+         data-position='{"bottom": 15, "right": 15 }'
+         data-type="fixed"
+         data-offset-top="400"
+         data-compensation="#header"
+         data-show-effect="slideInUp"
+         data-hide-effect="slideOutDown">
+         <span class="fas fa-arrow-up u-go-to__inner"></span>
+     </a>
+     <!-- End Go to Top -->
         

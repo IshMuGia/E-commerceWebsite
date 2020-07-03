@@ -3,7 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Prod = require('../models/Products');
 const Rev = require("../models/Review");
-
+const Review = require('../models/Review');
+const User = require('../models/Users');
 
 router.get("/", (req, res) => {
     console.log('hello')
@@ -13,39 +14,96 @@ router.get("/", (req, res) => {
     } else {
         res.redirect("/myaccount");
     }
+
 });
 
-router.post("/product", (req, res) => {
-    const id = req.body.id;
+
+// router.get("/", (req, res) => {
+//     Prod.find({}, 'brand s_des img1 mrp model_no -_id')
+//         .then(results => {
+//             if (results) {
+//                 res.render('index', { results: results });
+//             } else { console.log("Empty") }
+//         })
+//         .catch(err => console.log(err));
+// });
+// router.get("/list", (req, res) => {
+//     Prod.find().distinct('brand')
+//         .then(docs1 => {
+//             Prod.find().distinct('sub_brand')
+//             .then(docs2 => {
+//                 const docs = docs1.concat(docs2)
+//                 console.log(docs)
+//             })
+//             .catch(err => {
+//                 res.status(500).json({
+//                     error: err
+//                 });
+//             });
+
+//     })
+//     .catch(err => {
+//         res.status(500).json({
+//             error: err
+//         });
+//     });
+// });
+// Search
+router.post("/search", (req, res) => {
+    var word = req.body.word;
+    Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
+        .exec()
+        .then(results => {
+            console.log(results)
+            res.render("shop", { results: results });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+});
+
+router.post("/review", (req, res) => {
+    var rating = req.body.rating;
+    var comment = req.body.comment;
+    var model_no = req.body.id;
+    var email = "giannadrego1503@gmail.com";
+    User.find({ email: email }, 'fname lname -_id').then(results => {
+        console.log(results) {
+            fname = results[0].fname
+            lname = results[0].lname
+            const newRev = new Rev({
+                _id: new mongoose.Types.ObjectId(),
+                rating: rating,
+                comment: comment,
+                product: model_no,
+                email: email,
+                fname: fname,
+                lname: lname,
+            });
+            console.log(newRev)
+            newRev
+                .save()
+                .then(Rev => {
+                    res.redirect('/dproduct/?id=' + model_no);
+                    console.log("Review Submitted");
+                    console.log(newRev);
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+        }
+    });
+});
+
+
+router.get("/dproduct", (req, res) => {
+    const id = req.query.id;
     console.log(id)
-
-
-    // Prod.aggregate([{
-    //             $lookup: {
-
-    //                 from: 'product_review',
-    //                 localField: 'review',
-    //                 foreignField: '_id',
-    //                 as: 'Reviews'
-
-    //             }
-    //         },
-    //         {
-    //             $match: { model_no: 'id' }
-    //         }
-    //     ])
-    //     .unwind('tags')
-    //     .exec(function(err, result) {
-
-    //         if (err)
-    //             throw err;
-    //         console.log(result);
-    //         res.send(result);
-
-    //     });
-
-
-    Prod.find({ model_no: id }, 'brand model_no')
+    Prod.find({ model_no: id })
         .exec()
         .then(docs1 => {
 
@@ -56,7 +114,7 @@ router.post("/product", (req, res) => {
 
                     const docs = docs1.concat(docs2)
                     console.log(docs)
-                    res.status(200).json({ results: docs });
+                    res.render('product', { results: docs });
                 })
                 .catch(err => {
                     res.status(500).json({
@@ -70,20 +128,37 @@ router.post("/product", (req, res) => {
                 error: err
             });
         });
+});
 
-
-
-    // Prod.find({}, 'brand s_des img1 mrp -_id')
-    //     .then(results => {
-    //         if (results) {
-    //             res.render('index', { results: results });
-    //         } else { console.log("Empty") }
-    //     })
-    //     .catch(err => console.log(err));
+router.get("/addtocart", (req, res) => {
+    const email = req.query.email;
+    console.log(email)
+    Cart.find({ model_no: email }, 'email model_no')
+        .exec()
+        .then(docs1 => {
+            Prod.find({ product: id })
+                .exec()
+                .then(docs2 => {
+                    const docs = docs1.concat(docs2)
+                    RT - AC86U
+                    console.log(docs)
+                    res.status(200).json({ results: docs });
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
 });
 
 
-router.get("/search", (req, res) => {
+router.get("/searchmushira", (req, res) => {
     var q = req.query.q;
     //full text 
     // Product.find({
@@ -114,8 +189,12 @@ router.get("/search", (req, res) => {
 });
 
 // Brand Shop
-router.get("/brandshop", (req, res) => {
-    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id')
+router.get("/brandshop", (req, res) => { <<
+    << << < HEAD
+    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id') ===
+        === =
+        Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id') >>>
+        >>> > 3 bf84e9d10cd5bc8e370fb15a7384fe2d39f084e
         .then(results => {
             if (results) {
                 console.log(results);
@@ -127,7 +206,7 @@ router.get("/brandshop", (req, res) => {
 
 // SubBrand Shop
 router.get("/subbrandshop", (req, res) => {
-    Prod.find({ sub_brand: req.query.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id')
+    Prod.find({ sub_brand: req.query.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id')
         .then(results => {
             if (results) {
                 console.log(results);
@@ -198,13 +277,32 @@ router.get("/login", (req, res) => {
 
 router.get("/logged", (req, res) => {
     if (req.session.email) {
-        Prod.find({}, 'brand s_des img1 mrp -_id')
-            .then(results => {
-                if (results) {
-                    res.render('index', { results: results });
-                } else { console.log("Empty") }
-            })
-            .catch(err => console.log(err));
+        Prod.find({}, 'brand s_des img1 mrp model_no -_id')
+            .exec()
+            .then(docs1 => {
+                Prod.find().distinct('brand')
+                    .then(docs2 => {
+                        Prod.find().distinct('sub_brand')
+                            .then(docs3 => {
+                                Prod.find().distinct('model_no')
+                                    .then(docs4 => {
+                                        const docs = docs2.concat(docs3, docs4, docs1)
+                                        console.log(docs)
+                                        res.render('index', { results: docs })
+                                    })
+                                    .catch(err => {
+                                        res.status(500).json({
+                                            error: err
+                                        });
+                                    });
+                            });
+                    })
+                    .catch(err => {
+                        res.status(500).json({
+                            error: err
+                        });
+                    });
+            });
     }
 
 });
@@ -212,7 +310,6 @@ router.get("/logged", (req, res) => {
 router.get("/myaccount", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     const msg = "";
-
     res.render('myaccount', { msg: msg });
 });
 
