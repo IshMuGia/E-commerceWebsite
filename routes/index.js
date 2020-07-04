@@ -7,8 +7,8 @@ const Review = require('../models/Review');
 const User = require('../models/Users');
 
 router.get("/", (req, res) => {
-    console.log('hello')
-    console.log(req.session.email)
+    //console.log('hello')
+    //console.log(req.session.email)
     if (req.session.email) {
         res.redirect('/logged');
     } else {
@@ -70,32 +70,32 @@ router.post("/review", (req, res) => {
     var model_no = req.body.id;
     var email = "giannadrego1503@gmail.com";
     User.find({ email: email }, 'fname lname -_id').then(results => {
-        console.log(results) {
-            fname = results[0].fname
-            lname = results[0].lname
-            const newRev = new Rev({
-                _id: new mongoose.Types.ObjectId(),
-                rating: rating,
-                comment: comment,
-                product: model_no,
-                email: email,
-                fname: fname,
-                lname: lname,
-            });
-            console.log(newRev)
-            newRev
-                .save()
-                .then(Rev => {
-                    res.redirect('/dproduct/?id=' + model_no);
-                    console.log("Review Submitted");
-                    console.log(newRev);
-                })
-                .catch(err => {
-                    res.status(500).json({
-                        error: err
-                    });
+        console.log(results)
+        fname = results[0].fname
+        lname = results[0].lname
+        const newRev = new Rev({
+            _id: new mongoose.Types.ObjectId(),
+            rating: rating,
+            comment: comment,
+            product: model_no,
+            email: email,
+            fname: fname,
+            lname: lname,
+        });
+        console.log(newRev)
+        newRev
+            .save()
+            .then(Rev => {
+                res.redirect('/dproduct/?id=' + model_no);
+                console.log("Review Submitted");
+                console.log(newRev);
+            })
+            .catch(err => {
+                res.status(500).json({
+                    error: err
                 });
-        }
+            });
+
     });
 });
 
@@ -189,12 +189,8 @@ router.get("/searchmushira", (req, res) => {
 });
 
 // Brand Shop
-router.get("/brandshop", (req, res) => { <<
-    << << < HEAD
-    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id') ===
-        === =
-        Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id') >>>
-        >>> > 3 bf84e9d10cd5bc8e370fb15a7384fe2d39f084e
+router.get("/brandshop", (req, res) => {
+    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id')
         .then(results => {
             if (results) {
                 console.log(results);
