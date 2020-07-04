@@ -72,7 +72,7 @@ router.post("/review", (req, res) => {
     var model_no = req.body.id;
     var email = "giannadrego1503@gmail.com";
     User.find({ email: email }, 'fname lname -_id').then(results => {
-        console.log(results) {
+        console.log(results) 
             fname = results[0].fname
             lname = results[0].lname
             const newRev = new Rev({
@@ -97,9 +97,8 @@ router.post("/review", (req, res) => {
                         error: err
                     });
                 });
-        }
+        });
     });
-});
 
 
 router.get("/dproduct", (req, res) => {
@@ -262,12 +261,8 @@ router.get("/searchmushira", (req, res) => {
 });
 
 // Brand Shop
-router.get("/brandshop", (req, res) => { <<
-    << << < HEAD
-    Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 -_id') ===
-        === =
-        Prod.find({ brand: req.query.brand }, 'sub_brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id') >>>
-        >>> > 3 bf84e9d10cd5bc8e370fb15a7384fe2d39f084e
+router.get("/brandshop", (req, res) => { 
+        Prod.find({ brand: req.query.brand }) 
         .then(results => {
             if (results) {
                 console.log(results);
@@ -279,7 +274,7 @@ router.get("/brandshop", (req, res) => { <<
 
 // SubBrand Shop
 router.get("/subbrandshop", (req, res) => {
-    Prod.find({ sub_brand: req.query.sub_brand }, 'brand s_des img1 mrp a_1 a_2 a_3 a_4 a_5 model_no -_id')
+    Prod.find({ sub_brand: req.query.sub_brand })
         .then(results => {
             if (results) {
                 console.log(results);
