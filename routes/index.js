@@ -5,6 +5,8 @@ const Prod = require('../models/Products');
 const Rev = require("../models/Review");
 const Review = require('../models/Review');
 const User = require('../models/Users');
+const Wishlist = require('../models/Wishlist');
+
 
 router.get("/", (req, res) => {
     console.log('hello')
@@ -157,6 +159,77 @@ router.get("/addtocart", (req, res) => {
         });
 });
 
+router.post("/addtowishlist", (req, res) => {
+    var email = req.body.email;
+    var model_no = req.body.model_no;
+        { 
+        const newwish = new Wishlist({
+        _id: new mongoose.Types.ObjectId(),
+        model_no: model_no, 
+        email: email,
+    }); 
+        console.log(newwish)
+        newwish
+        .save()
+            .then(Wishlist => {
+            res.redirect('/dproduct/?model_no=product' +req.body.model_no);
+            console.log("Added to Wishlist");
+            console.log(newwish);
+            })
+            .catch(err => {
+                res.status(500).json({
+                    error: err
+                });
+            });
+      }  });    
+
+      
+      router.post("/removefromwishlist", (req, res) => {
+        var email = req.body.email;
+        var model_no = req.body.model_no;
+        Wishlist.findOneAndRemove({ email: email, model_no: model_no }) .then(results  =>{
+                res.redirect('/wishlist');
+                console.log("Removed from Wishlist");
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+            });
+            
+router.post("/displaywishlist", (req, res) => {
+    var email = req.body.email;
+    Wishlist.find({email: email}, 'model_no -_id')
+        .exec()
+        .then(docs1 => {
+            var i=0;
+            const docs = {};
+            while(docs1[i].model_no)
+            {
+            model_no = docs1[i].model_no;
+            Prod.find({model_no : model_no})
+            .exec()
+            .then(docs2 => {
+                docs[i]= docs2;
+            console.log(docs)
+            console.log(i)
+                        })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+                i=i+1
+            }            
+        res.status(200).json({results: docs});
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+    });
 
 router.get("/searchmushira", (req, res) => {
     var q = req.query.q;
