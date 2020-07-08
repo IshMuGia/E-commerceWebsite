@@ -35,7 +35,7 @@
                                 <!-- Nav -->
                                 <nav class="navbar navbar-expand u-header__navbar py-0 justify-content-xl-between max-width-270 min-width-270">
                                     <!-- Logo -->
-                                    <a class="order-1 order-xl-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="https://transvelo.github.io/electro-html/2.0/html/home/index.html" aria-label="Electro">
+                                    <a class="order-1 order-xl-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="/" aria-label="Electro">
                                         <svg version="1.1" x="0px" y="0px" width="175.748px" height="42.52px" viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52" style="margin-bottom: 0;">
                                             <ellipse class="ellipse-bg" fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700" cx="170.05" cy="36.341" rx="5.32" ry="5.367"></ellipse>
                                             <path fill-rule="evenodd" clip-rule="evenodd" fill="#333E48" d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
@@ -409,7 +409,7 @@
                                 <div class="d-inline-flex">
                                     <ul class="d-flex list-unstyled mb-0 align-items-center">
                                         
-                                        <li class="col"><a href="/wishlist" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
+                                        <li class="col"><a href="/wishlist/?email=<%=email%>" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
                                         <li class="col"><a href="/myaccount" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="My Account"><i class="font-size-22 ec ec-user"></i></a></li>
                                         <li class="col"><a href="/store" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Store Locator"><i class="font-size-24 ec ec-map-pointer"></i></a></li>
 
@@ -804,9 +804,9 @@
                             <div class="col-md-auto align-self-center ml-auto">
                                 <div class="d-flex">
                                     <ul class="d-flex list-unstyled mb-0">
-                                        <li class="col "><a href="https://transvelo.github.io/electro-html/2.0/html/shop/wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
+                                        <li class="col "><a href="/wishlist/?email=<%=email%>" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Favorites"><i class="font-size-22 ec ec-favorites"></i></a></li>
                                         <li class="col "><a href="/myaccount" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="My Account"><i class="font-size-22 ec ec-user"></i></a></li>
-                                        <li class="col "><a href="https://transvelo.github.io/electro-html/2.0/html/shop/wishlist.html" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Store Locator"><i class="font-size-24 ec ec-map-pointer"></i></a></li>
+                                        <li class="col "><a href="/wishlist/?email=<%=email%>" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="Store Locator"><i class="font-size-24 ec ec-map-pointer"></i></a></li>
 
                                         <li class="col ">
                                             <a href="https://transvelo.github.io/electro-html/2.0/html/shop/cart.html" class="text-gray-90 position-relative d-flex " data-toggle="tooltip" data-placement="top" title="Cart">
@@ -863,20 +863,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <% results.forEach(function(result) {%>
+
                                     <tr>
                                         <td class="text-center">
-                                            <a href="#" class="text-gray-32 font-size-26">×</a>
+                                            <a href="/removefromwishlist/?model_no=<%=result.model_no%>&email=<%=email%>" class="text-gray-32 font-size-26">×</a>
                                         </td>
                                         <td class="d-none d-md-table-cell">
-                                            <a href="#"><img class="img-fluid max-width-100 p-1 border border-color-1" src="/img/300X300/img6.jpg" alt="Image Description"></a>
+                                            <a href="/dproduct/?id=<%=result.model_no%>"><img class="img-fluid max-width-100 p-1 border border-color-1" src="<%= result.img1 %>" alt="Image Description"></a>
                                         </td>
 
                                         <td data-title="Product">
-                                            <a href="#" class="text-gray-90">Ultra Wireless S50 Headphones S50 with Bluetooth</a>
+                                            <a href="/dproduct/?id=<%=result.model_no%>" class="text-gray-90"><%= result.model_no %></a>
                                         </td>
 
                                         <td data-title="Unit Price">
-                                            <span class="">$1,100.00</span>
+                                            <span class="">₹<%= result.mrp %></span>
                                         </td>
 
                                         <td data-title="Stock Status">
@@ -889,32 +891,7 @@
                                             <button type="button" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5 w-100 w-md-auto">Add to Cart</button>
                                         </td>
                                     </tr>
-                                    <tr class="">
-                                        <td class="text-center">
-                                            <a href="#" class="text-gray-32 font-size-26">×</a>
-                                        </td>
-                                        <td class="d-none d-md-table-cell">
-                                            <a href="#"><img class="img-fluid max-width-100 p-1 border border-color-1" src="/img/300X300/img7.png" alt="Image Description"></a>
-                                        </td>
-
-                                        <td data-title="Product">
-                                            <a href="#" class="text-gray-90">Widescreen NX Mini F1 SMART NX</a>
-                                        </td>
-
-                                        <td data-title="Unit Price">
-                                            <span class="">$685.00</span>
-                                        </td>
-
-                                        <td data-title="Stock Status">
-                                            <!-- Stock Status -->
-                                            <span>In stock</span>
-                                            <!-- End Stock Status -->
-                                        </td>
-
-                                        <td>
-                                            <button type="button" class="btn btn-soft-secondary mb-3 mb-md-0 font-weight-normal px-5 px-md-4 px-lg-5 w-100 w-md-auto">Add to Cart</button>
-                                        </td>
-                                    </tr>
+                                    <% }); %>
                                 </tbody>
                             </table>
                         </div>

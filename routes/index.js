@@ -218,7 +218,7 @@ router.get("/removefromwishlist", (req, res) => {
     var email = req.query.email;
     var model_no = req.query.model_no;
     Wishlist.findOneAndRemove({ email: email, model_no: model_no }).then(results => {
-            res.redirect('/wishlist');
+            res.redirect('/wishlist/?email='+req.query.email);
             console.log("Removed from Wishlist");
         })
         .catch(err => {
@@ -228,8 +228,8 @@ router.get("/removefromwishlist", (req, res) => {
         });
 });
 //const g_docs = [];
-router.post("/displaywishlist", (req, res) => {
-    var email = req.body.email;
+router.get("/wishlist", (req, res) => {
+    var email = req.query.email;
     Wishlist.find({ email: email }, 'model_no -_id')
         .exec()
         .then(docs1 => {
@@ -238,9 +238,8 @@ router.post("/displaywishlist", (req, res) => {
                 .in(docs1.map(i => i.model_no))
                 .exec()
                 .then(records => {
+                    res.render("wishlist", { results: records });
 
-                    //console.log(records)
-                    res.status(200).json({ results: records });
                 })
                 .catch(err => {
 
@@ -427,16 +426,16 @@ router.get("/cart", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     res.render("cart");
 });
+router.get("/wishlist", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("wishlist");
+});
 
 router.get("/checkout", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     res.render("checkout");
 });
 
-router.get("/wishlist", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("wishlist");
-});
 
 // router.get("/", (req, res) => {
 //     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
