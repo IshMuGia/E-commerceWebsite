@@ -13,6 +13,9 @@ const Product = require('./models/Products');
 
 //Review
 const Rev = require("./models/Rev");
+const Review = require('./models/Review');
+const Wishlist = require('./models/Wishlist');
+const Search = require('./models/Search');
 
 
 const app = express();
@@ -66,7 +69,6 @@ app.use('/', require('./routes/index.js'))
 app.use('/register', require('./routes/users.js'))
 app.use('/product', require('./routes/product.js'))
 app.use('/login', require('./routes/login.js'))
-
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`server started on port ${PORT}`));

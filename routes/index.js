@@ -6,6 +6,7 @@ const Rev = require("../models/Review");
 const Review = require('../models/Review');
 const User = require('../models/Users');
 const Wishlist = require('../models/Wishlist');
+const Search = require('../models/Search');
 
 
 router.get("/", (req, res) => {
@@ -51,26 +52,56 @@ router.get("/", (req, res) => {
 //     });
 // });
 // Search
+// router.post("/search", (req, res) => {
+//     var word = req.body.word;
+//     Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
+//         .exec()
+//         .then(results => {
+//             console.log(results)
+//             res.render("shop", { results: results });
+//         })
+//         .catch(err => {
+//             res.status(500).json({
+//                 error: err
+//             });
+//         });
+// });
 router.post("/search", (req, res) => {
+    var email = req.body.email;
     var word = req.body.word;
-    Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
+        { 
+        const newsearch = new Search ({
+        _id: new mongoose.Types.ObjectId(),
+        word: word, 
+        email: email,
+    }); 
+        console.log(newsearch)
+        newsearch
+        .save()
+            .then(Search => {
+            console.log("Added to Search Collection");
+            })
+            Prod.find({$or:[{brand: word },{sub_brand: word},{model_no: word }]})
         .exec()
         .then(results => {
-            console.log(results)
+            if (results){
+            console.log(results);
             res.render("shop", { results: results });
+            } else { console.log("Empty") }
         })
-        .catch(err => {
-            res.status(500).json({
-                error: err
+            .catch(err => {
+                res.status(500).json({
+                    error: err
+                });
             });
-        });
-});
+      }  });
+
 
 router.post("/review", (req, res) => {
     var rating = req.body.rating;
     var comment = req.body.comment;
     var model_no = req.body.id;
-    var email = "giannadrego1503@gmail.com";
+    var email = req.body.email;
     User.find({ email: email }, 'fname lname -_id').then(results => {
         console.log(results)
         fname = results[0].fname
@@ -158,9 +189,9 @@ router.get("/addtocart", (req, res) => {
         });
 });
 
-router.post("/addtowishlist", (req, res) => {
-    var email = req.body.email;
-    var model_no = req.body.model_no; {
+router.get("/addtowishlist", (req, res) => {
+    var email = req.query.email;
+    var model_no = req.query.model_no; {
         const newwish = new Wishlist({
             _id: new mongoose.Types.ObjectId(),
             model_no: model_no,
@@ -170,7 +201,7 @@ router.post("/addtowishlist", (req, res) => {
         newwish
             .save()
             .then(Wishlist => {
-                res.redirect('/dproduct/?model_no=product' + req.body.model_no);
+                res.redirect('/dproduct/?id=' + req.query.model_no);
                 console.log("Added to Wishlist");
                 console.log(newwish);
             })
@@ -183,9 +214,9 @@ router.post("/addtowishlist", (req, res) => {
 });
 
 
-router.post("/removefromwishlist", (req, res) => {
-    var email = req.body.email;
-    var model_no = req.body.model_no;
+router.get("/removefromwishlist", (req, res) => {
+    var email = req.query.email;
+    var model_no = req.query.model_no;
     Wishlist.findOneAndRemove({ email: email, model_no: model_no }).then(results => {
             res.redirect('/wishlist');
             console.log("Removed from Wishlist");

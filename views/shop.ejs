@@ -1284,12 +1284,12 @@
                                                             <div class="text-gray-100">₹<%= result.mrp %></div>
                                                         </div>
                                                         <div class="prodcut-add-cart">
-                                                            <a href="/dproduct/?id=<%=result.model_no%>" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Add to cart</a>
+                                                            <a href="/addtowishlist/?email=<%=email%>&model_no=<%=result.model_no%>" class="btn btn-sm btn-block btn-primary-dark btn-wide transition-3d-hover">Add to cart</a>
                                                         </div>
                                                     </div>
                                                     <div class="flex-horizontal-center justify-content-between justify-content-wd-center flex-wrap">
                                                         <a href="compare.html" class="text-gray-6 font-size-13 mx-wd-3"><i class="ec ec-compare mr-1 font-size-15"></i> Compare</a>
-                                                        <a href="wishlist.html" class="text-gray-6 font-size-13 mx-wd-3"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
+                                                        <a href="/addtowishlist/?email=<%=email%>&model_no=<%=result.model_no%>" class="text-gray-6 font-size-13 mx-wd-3"><i class="ec ec-favorites mr-1 font-size-15"></i> Wishlist</a>
                                                     </div>
                                                 </div>
                                             </div>
