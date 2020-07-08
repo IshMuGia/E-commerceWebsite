@@ -48,7 +48,10 @@ app.use(session({
     saveUninitialized: false
 }));
 
-
+app.use(function(req, res, next) {
+    res.locals.email = req.session.email;
+    next();
+  });
 /*
 //connect flash
 app.use(flash());
