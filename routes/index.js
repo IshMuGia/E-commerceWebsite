@@ -9,8 +9,8 @@ const Wishlist = require('../models/Wishlist');
 
 
 router.get("/", (req, res) => {
-    console.log('hello')
-    console.log(req.session.email)
+    //console.log('hello')
+    //console.log(req.session.email)
     if (req.session.email) {
         res.redirect('/logged');
     } else {
@@ -72,33 +72,33 @@ router.post("/review", (req, res) => {
     var model_no = req.body.id;
     var email = "giannadrego1503@gmail.com";
     User.find({ email: email }, 'fname lname -_id').then(results => {
-        console.log(results) 
-            fname = results[0].fname
-            lname = results[0].lname
-            const newRev = new Rev({
-                _id: new mongoose.Types.ObjectId(),
-                rating: rating,
-                comment: comment,
-                product: model_no,
-                email: email,
-                fname: fname,
-                lname: lname,
-            });
-            console.log(newRev)
-            newRev
-                .save()
-                .then(Rev => {
-                    res.redirect('/dproduct/?id=' + model_no);
-                    console.log("Review Submitted");
-                    console.log(newRev);
-                })
-                .catch(err => {
-                    res.status(500).json({
-                        error: err
-                    });
-                });
+        console.log(results)
+        fname = results[0].fname
+        lname = results[0].lname
+        const newRev = new Rev({
+            _id: new mongoose.Types.ObjectId(),
+            rating: rating,
+            comment: comment,
+            product: model_no,
+            email: email,
+            fname: fname,
+            lname: lname,
         });
+        console.log(newRev)
+        newRev
+            .save()
+            .then(Rev => {
+                res.redirect('/dproduct/?id=' + model_no);
+                console.log("Review Submitted");
+                console.log(newRev);
+            })
+            .catch(err => {
+                res.status(500).json({
+                    error: err
+                });
+            });
     });
+});
 
 
 router.get("/dproduct", (req, res) => {
@@ -160,75 +160,74 @@ router.get("/addtocart", (req, res) => {
 
 router.post("/addtowishlist", (req, res) => {
     var email = req.body.email;
-    var model_no = req.body.model_no;
-        { 
+    var model_no = req.body.model_no; {
         const newwish = new Wishlist({
-        _id: new mongoose.Types.ObjectId(),
-        model_no: model_no, 
-        email: email,
-    }); 
+            _id: new mongoose.Types.ObjectId(),
+            model_no: model_no,
+            email: email,
+        });
         console.log(newwish)
         newwish
-        .save()
+            .save()
             .then(Wishlist => {
-            res.redirect('/dproduct/?model_no=product' +req.body.model_no);
-            console.log("Added to Wishlist");
-            console.log(newwish);
+                res.redirect('/dproduct/?model_no=product' + req.body.model_no);
+                console.log("Added to Wishlist");
+                console.log(newwish);
             })
             .catch(err => {
                 res.status(500).json({
                     error: err
                 });
             });
-      }  });    
+    }
+});
 
-      
-      router.post("/removefromwishlist", (req, res) => {
-        var email = req.body.email;
-        var model_no = req.body.model_no;
-        Wishlist.findOneAndRemove({ email: email, model_no: model_no }) .then(results  =>{
-                res.redirect('/wishlist');
-                console.log("Removed from Wishlist");
-                })
-                .catch(err => {
-                    res.status(500).json({
-                        error: err
-                    });
-                });
-            });
-            
-router.post("/displaywishlist", (req, res) => {
+
+router.post("/removefromwishlist", (req, res) => {
     var email = req.body.email;
-    Wishlist.find({email: email}, 'model_no -_id')
-        .exec()
-        .then(docs1 => {
-            var i=0;
-            const docs = {};
-            while(docs1[i].model_no)
-            {
-            model_no = docs1[i].model_no;
-            Prod.find({model_no : model_no})
-            .exec()
-            .then(docs2 => {
-                docs[i]= docs2;
-            console.log(docs)
-            console.log(i)
-                        })
-                .catch(err => {
-                    res.status(500).json({
-                        error: err
-                    });
-                });
-                i=i+1
-            }            
-        res.status(200).json({results: docs});
+    var model_no = req.body.model_no;
+    Wishlist.findOneAndRemove({ email: email, model_no: model_no }).then(results => {
+            res.redirect('/wishlist');
+            console.log("Removed from Wishlist");
         })
         .catch(err => {
             res.status(500).json({
                 error: err
             });
         });
-    });
+});
+
+router.post("/displaywishlist", (req, res) => {
+    var email = req.body.email;
+    Wishlist.find({ email: email }, 'model_no -_id')
+        .exec()
+        .then(docs1 => {
+            var i = 0;
+            const docs = {};
+            while (docs1[i].model_no) {
+                model_no = docs1[i].model_no;
+                Prod.find({ model_no: model_no })
+                    .exec()
+                    .then(docs2 => {
+                        docs[i] = docs2;
+                        console.log(docs)
+                        console.log(i)
+                    })
+                    .catch(err => {
+                        res.status(500).json({
+                            error: err
+                        });
+                    });
+                i = i + 1
+            }
+            res.status(200).json({ results: docs });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
+});
 
 router.get("/searchmushira", (req, res) => {
     var q = req.query.q;
@@ -261,8 +260,8 @@ router.get("/searchmushira", (req, res) => {
 });
 
 // Brand Shop
-router.get("/brandshop", (req, res) => { 
-        Prod.find({ brand: req.query.brand }) 
+router.get("/brandshop", (req, res) => {
+    Prod.find({ brand: req.query.brand })
         .then(results => {
             if (results) {
                 console.log(results);
