@@ -196,33 +196,30 @@ router.post("/removefromwishlist", (req, res) => {
             });
         });
 });
-
+//const g_docs = [];
 router.post("/displaywishlist", (req, res) => {
     var email = req.body.email;
     Wishlist.find({ email: email }, 'model_no -_id')
         .exec()
         .then(docs1 => {
-            var i = 0;
-            const docs = {};
-            while (docs1[i].model_no) {
-                model_no = docs1[i].model_no;
-                Prod.find({ model_no: model_no })
-                    .exec()
-                    .then(docs2 => {
-                        docs[i] = docs2;
-                        console.log(docs)
-                        console.log(i)
-                    })
-                    .catch(err => {
-                        res.status(500).json({
-                            error: err
-                        });
+            Prod.find()
+                .where('model_no')
+                .in(docs1.map(i => i.model_no))
+                .exec()
+                .then(records => {
+
+                    //console.log(records)
+                    res.status(200).json({ results: records });
+                })
+                .catch(err => {
+
+                    res.status(500).json({
+                        error: err
                     });
-                i = i + 1
-            }
-            res.status(200).json({ results: docs });
+                });
         })
         .catch(err => {
+            //console.log("lalal")
             res.status(500).json({
                 error: err
             });
@@ -416,3 +413,35 @@ router.get("/wishlist", (req, res) => {
 // });
 
 module.exports = router;
+
+// router.post("/displaywishlist", (req, res) => {
+//     var email = req.body.email;
+//     Wishlist.find({ email: email }, 'model_no -_id')
+//         .exec()
+//         .then(docs1 => {
+//             var i = 0;
+//             const docs = [];
+//             n = docs1.length
+//             while (i < n) {
+//                 model_no = doc1[i].model_no;
+//                 Prod.find({ model_no: model_no })
+//                     .exec()
+//                     .then(docs2 => {
+//                         docs.push(docs2[0]);
+//                     .catch(err => {
+//                         res.status(500).json({
+//                             error: err
+//                         });
+//                     });
+//                 i = i + 1
+//                 console.log(docs)
+//             }
+
+//             res.status(200).json({ results: docs });
+//         })
+//         .catch(err => {
+//             res.status(500).json({
+//                 error: err
+//             });
+//         });
+// });
