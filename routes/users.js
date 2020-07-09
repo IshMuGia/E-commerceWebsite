@@ -40,12 +40,16 @@ router.post("/", (req, res) => {
     User.findOne({ email: req.body.email })
         .then(user => {
             if (user) {
-                res.render('myaccount', {
-                    email,
-                    password
-                });
-                const msg = "User already exists!";
-                res.render('myaccount', { msg1: msg });
+                // res.render('myaccount', {
+                //     email,
+                //     password
+                // });
+                const msg1 = "User already exists!";
+                const msg = "";
+                var rec = new Object();
+                rec.msg1 = msg1;
+                rec.msg = msg;
+                res.render('myaccount', { rec: rec });
 
                 console.log("email exists");
                 //user exists

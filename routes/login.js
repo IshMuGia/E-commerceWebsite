@@ -18,7 +18,12 @@ router.post("/", (req, res) => {
             //if user not exist than return status 400
             //console.log("User not exist");
             const msg = "User not exist";
-            if (!user) return res.render('myaccount', { msg: msg });
+            const msg1 = "";
+            var rec = new Object();
+            rec.msg1 = msg1;
+            rec.msg = msg;
+
+            if (!user) return res.render('myaccount', { rec: rec });;
             //if user exist than compare password
             //password comes from the user
             //user.password comes from the database
@@ -31,7 +36,12 @@ router.post("/", (req, res) => {
                     return res.redirect('/');
                 } else {
                     const msg = "Invalid password";
-                    return res.render('myaccount', { msg: msg });
+                    const msg1 = "";
+                    var rec = new Object();
+                    rec.msg1 = msg1;
+                    rec.msg = msg;
+
+                    return res.render('myaccount', { rec: rec });
                 }
             });
             /*if (user.password != password) return res.status(401).send({ msg: 'Invalid email or password' });

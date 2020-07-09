@@ -68,33 +68,33 @@ router.get("/", (req, res) => {
 // });
 router.post("/search", (req, res) => {
     var email = req.body.email;
-    var word = req.body.word;
-        { 
-        const newsearch = new Search ({
-        _id: new mongoose.Types.ObjectId(),
-        word: word, 
-        email: email,
-    }); 
+    var word = req.body.word; {
+        const newsearch = new Search({
+            _id: new mongoose.Types.ObjectId(),
+            word: word,
+            email: email,
+        });
         console.log(newsearch)
         newsearch
-        .save()
+            .save()
             .then(Search => {
-            console.log("Added to Search Collection");
+                console.log("Added to Search Collection");
             })
-            Prod.find({$or:[{brand: word },{sub_brand: word},{model_no: word }]})
-        .exec()
-        .then(results => {
-            if (results){
-            console.log(results);
-            res.render("shop", { results: results });
-            } else { console.log("Empty") }
-        })
+        Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
+            .exec()
+            .then(results => {
+                if (results) {
+                    console.log(results);
+                    res.render("shop", { results: results });
+                } else { console.log("Empty") }
+            })
             .catch(err => {
                 res.status(500).json({
                     error: err
                 });
             });
-      }  });
+    }
+});
 
 
 router.post("/review", (req, res) => {
@@ -218,7 +218,7 @@ router.get("/removefromwishlist", (req, res) => {
     var email = req.query.email;
     var model_no = req.query.model_no;
     Wishlist.findOneAndRemove({ email: email, model_no: model_no }).then(results => {
-            res.redirect('/wishlist/?email='+req.query.email);
+            res.redirect('/wishlist/?email=' + req.query.email);
             console.log("Removed from Wishlist");
         })
         .catch(err => {
@@ -403,8 +403,12 @@ router.get("/logged", (req, res) => {
 
 router.get("/myaccount", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    const msg1 = "";
     const msg = "";
-    res.render('myaccount', { msg: msg });
+    var rec = new Object();
+    rec.msg1 = msg1;
+    rec.msg = msg;
+    res.render('myaccount', { rec: rec });
 });
 
 router.get("/shop", (req, res) => {
