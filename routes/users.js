@@ -80,6 +80,8 @@ router.post("/", (req, res) => {
                         newUser
                             .save()
                             .then(user => {
+                                req.session.email = email
+                                req.session.password = password
                                 res.redirect('/');
                             })
                     });
