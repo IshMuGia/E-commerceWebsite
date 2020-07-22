@@ -44,8 +44,6 @@ router.post("/", (req, res) => {
                     return res.render('myaccount', { rec: rec });
                 }
             });
-            /*if (user.password != password) return res.status(401).send({ msg: 'Invalid email or password' });
-            res.sendStatus(200);/*res.redirect('/index');*/
         })
         .catch(err => console.log(err));
 });

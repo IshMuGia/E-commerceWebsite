@@ -1,22 +1,10 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
-const passport = require('passport');
-const flash = require('connect-flash');
+// const flash = require('connect-flash');
 const session = require('express-session');
 
-//User Model
-const User = require('./models/Users');
-
-//Product Model
-const Product = require('./models/Products');
-
-//Review
-const Rev = require("./models/Rev");
-const Review = require('./models/Review');
-const Wishlist = require('./models/Wishlist');
-const Search = require('./models/Search');
-
+const MongoStore = require('connect-mongo')(session);
 
 const app = express();
 
@@ -24,9 +12,30 @@ const app = express();
 const db = require('./config/keys').MongoURI;
 
 //Connect to Mongo 
+// const connection = mongoose.createConnection(db, { useUnifiedTopology: true, useNewUrlParser: true })
 mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
     .then(() => console.log("DB connected"))
     .catch(err => console.log(err));
+
+// const sessionStore = new MongoStore({
+//     mongooseConnection: connection,
+//     collection: 'sessions'
+// });
+const idle_timout = 60 * 30
+    //Express session 
+app.use(session({
+    secret: 'IshMuGia',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection, ttl: 60 * 60 * 24 * 2 }),
+    cookie: {
+        maxAge: +idle_timout
+    }
+    // cookie: {
+    //     maxAge: 1000 * 60 * 60 * 24
+    // }
+}));
+// sessionStore
 
 //path
 var path = require('path').join(__dirname, '/public');
@@ -44,17 +53,10 @@ app.use(bodyParser.urlencoded({
 }));
 //app.use(express.urlencoded({ extended: true }));
 
-//Express session 
-app.use(session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: false
-}));
-
 app.use(function(req, res, next) {
     res.locals.email = req.session.email;
     next();
-  });
+});
 /*
 //connect flash
 app.use(flash());

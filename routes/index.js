@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Prod = require('../models/Products');
 const Rev = require("../models/Review");
-const Review = require('../models/Review');
 const User = require('../models/Users');
 const Wishlist = require('../models/Wishlist');
 const Search = require('../models/Search');
@@ -447,35 +446,3 @@ router.get("/checkout", (req, res) => {
 // });
 
 module.exports = router;
-
-// router.post("/displaywishlist", (req, res) => {
-//     var email = req.body.email;
-//     Wishlist.find({ email: email }, 'model_no -_id')
-//         .exec()
-//         .then(docs1 => {
-//             var i = 0;
-//             const docs = [];
-//             n = docs1.length
-//             while (i < n) {
-//                 model_no = doc1[i].model_no;
-//                 Prod.find({ model_no: model_no })
-//                     .exec()
-//                     .then(docs2 => {
-//                         docs.push(docs2[0]);
-//                     .catch(err => {
-//                         res.status(500).json({
-//                             error: err
-//                         });
-//                     });
-//                 i = i + 1
-//                 console.log(docs)
-//             }
-
-//             res.status(200).json({ results: docs });
-//         })
-//         .catch(err => {
-//             res.status(500).json({
-//                 error: err
-//             });
-//         });
-// });

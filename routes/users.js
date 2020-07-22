@@ -7,15 +7,6 @@ const passport = require('passport');
 const User = require('../models/Users');
 //const { forwardAuthenticated } = require('../config/auth');
 
-//login
-
-/*
-//register page
-router.get("/register", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("register");
-});
-*/
 //Register handle
 router.post("/", (req, res) => {
     var fname = req.body.fname
@@ -24,26 +15,9 @@ router.post("/", (req, res) => {
     var password = req.body.password
     var phone = req.body.phone
     console.log(req.body);
-    /*if (errors) {
-        res.render('register', {
-            errors,
-            fname,
-            lname,
-            email,
-            phone,
-            dob,
-            pin,
-            password
-        });
-    } else {*/
-    // validation passed
     User.findOne({ email: req.body.email })
         .then(user => {
             if (user) {
-                // res.render('myaccount', {
-                //     email,
-                //     password
-                // });
                 const msg1 = "User already exists!";
                 const msg = "";
                 var rec = new Object();
@@ -52,13 +26,6 @@ router.post("/", (req, res) => {
                 res.render('myaccount', { rec: rec });
 
                 console.log("email exists");
-                //user exists
-                /*errors.push({ msg: 'Email is already registered!' });
-                res.render('register', {
-                    errors,
-                    email,
-                    password
-                });*/
             } else {
 
                 const newUser = new User({
@@ -90,36 +57,6 @@ router.post("/", (req, res) => {
                 //res.send('hello');
             }
         });
-    //res.send('pass');
+
 });
 module.exports = router;
-
-/*} else {
-    // validation passed
-    User.findOne({ email: req.body.email })
-        .then(user => {
-            if (user) {
-                console.log("email exists");
-
-                User.findOne({ password: req.body.password })
-                    .then(user => {
-                        if (user) {
-                        console.log("Correct password");
-                        res.sendStatus(200); /*res.redirect('/index');*/
-//user exists
-/*res.render('register', {
-                             errors,
-                            email,
-                            password
-                        });*/
-/*
-                }   })}
-            });
-        res.send('pass');
-    }
-});*/
-
-/*router.get("/", (req,res)=>{
-// return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-res.render("index");
-});*/
