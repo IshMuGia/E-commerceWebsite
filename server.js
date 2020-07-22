@@ -73,6 +73,8 @@ app.use('/', require('./routes/index.js'))
 app.use('/register', require('./routes/users.js'))
 app.use('/product', require('./routes/product.js'))
 app.use('/login', require('./routes/login.js'))
+app.use('/search', require('./routes/search.js'))
+app.use('/review', require('./routes/review.js'))
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, console.log(`server started on port ${PORT}`));

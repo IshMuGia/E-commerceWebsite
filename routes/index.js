@@ -3,10 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Prod = require('../models/Products');
 const Rev = require("../models/Review");
-const User = require('../models/Users');
 const Wishlist = require('../models/Wishlist');
-const Search = require('../models/Search');
-
 
 router.get("/", (req, res) => {
     //console.log('hello')
@@ -76,117 +73,6 @@ router.get('/logout', (req, res) => {
     });
 
 });
-
-// router.get("/", (req, res) => {
-//     Prod.find({}, 'brand s_des img1 mrp model_no -_id')
-//         .then(results => {
-//             if (results) {
-//                 res.render('index', { results: results });
-//             } else { console.log("Empty") }
-//         })
-//         .catch(err => console.log(err));
-// });
-// router.get("/list", (req, res) => {
-//     Prod.find().distinct('brand')
-//         .then(docs1 => {
-//             Prod.find().distinct('sub_brand')
-//             .then(docs2 => {
-//                 const docs = docs1.concat(docs2)
-//                 console.log(docs)
-//             })
-//             .catch(err => {
-//                 res.status(500).json({
-//                     error: err
-//                 });
-//             });
-
-//     })
-//     .catch(err => {
-//         res.status(500).json({
-//             error: err
-//         });
-//     });
-// });
-// Search
-// router.post("/search", (req, res) => {
-//     var word = req.body.word;
-//     Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
-//         .exec()
-//         .then(results => {
-//             console.log(results)
-//             res.render("shop", { results: results });
-//         })
-//         .catch(err => {
-//             res.status(500).json({
-//                 error: err
-//             });
-//         });
-// });
-router.post("/search", (req, res) => {
-    var email = req.body.email;
-    var word = req.body.word; {
-        const newsearch = new Search({
-            _id: new mongoose.Types.ObjectId(),
-            word: word,
-            email: email,
-        });
-        console.log(newsearch)
-        newsearch
-            .save()
-            .then(Search => {
-                console.log("Added to Search Collection");
-            })
-        Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
-            .exec()
-            .then(results => {
-                if (results) {
-                    console.log(results);
-                    res.render("shop", { results: results });
-                } else { console.log("Empty") }
-            })
-            .catch(err => {
-                res.status(500).json({
-                    error: err
-                });
-            });
-    }
-});
-
-
-router.post("/review", (req, res) => {
-    var rating = req.body.rating;
-    var comment = req.body.comment;
-    var model_no = req.body.id;
-    var email = req.body.email;
-    User.find({ email: email }, 'fname lname -_id').then(results => {
-        console.log(results)
-        fname = results[0].fname
-        lname = results[0].lname
-        const newRev = new Rev({
-            _id: new mongoose.Types.ObjectId(),
-            rating: rating,
-            comment: comment,
-            product: model_no,
-            email: email,
-            fname: fname,
-            lname: lname,
-        });
-        console.log(newRev)
-        newRev
-            .save()
-            .then(Rev => {
-                res.redirect('/dproduct/?id=' + model_no);
-                console.log("Review Submitted");
-                console.log(newRev);
-            })
-            .catch(err => {
-                res.status(500).json({
-                    error: err
-                });
-            });
-    });
-});
-
 
 router.get("/dproduct", (req, res) => {
     const id = req.query.id;
@@ -336,6 +222,37 @@ router.get("/subbrandshop", (req, res) => {
         .catch(err => console.log(err));
 });
 
+router.get("/shop", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("shop");
+});
+
+router.get("/product", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("product");
+});
+
+router.get("/checkout", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("checkout");
+});
+
+router.get("/cart", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("cart");
+});
+router.get("/wishlist", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("wishlist");
+});
+
+router.get("/checkout", (req, res) => {
+    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
+    res.render("checkout");
+});
+
+
+
 // Brand by Attribute Shop
 /*router.post("/brandbyattributeshop", (req, res, next) => {
     var fltrbrand = req.body.brand;
@@ -376,34 +293,50 @@ router.get("/subbrandshop", (req, res) => {
   }); */
 // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
 
+// router.get("/", (req, res) => {
+//     Prod.find({}, 'brand s_des img1 mrp model_no -_id')
+//         .then(results => {
+//             if (results) {
+//                 res.render('index', { results: results });
+//             } else { console.log("Empty") }
+//         })
+//         .catch(err => console.log(err));
+// });
+// router.get("/list", (req, res) => {
+//     Prod.find().distinct('brand')
+//         .then(docs1 => {
+//             Prod.find().distinct('sub_brand')
+//             .then(docs2 => {
+//                 const docs = docs1.concat(docs2)
+//                 console.log(docs)
+//             })
+//             .catch(err => {
+//                 res.status(500).json({
+//                     error: err
+//                 });
+//             });
 
-router.get("/shop", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("shop");
-});
-
-router.get("/product", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("product");
-});
-
-router.get("/checkout", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("checkout");
-});
-
-router.get("/cart", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("cart");
-});
-router.get("/wishlist", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("wishlist");
-});
-
-router.get("/checkout", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("checkout");
-});
+//     })
+//     .catch(err => {
+//         res.status(500).json({
+//             error: err
+//         });
+//     });
+// });
+// Search
+// router.post("/search", (req, res) => {
+//     var word = req.body.word;
+//     Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
+//         .exec()
+//         .then(results => {
+//             console.log(results)
+//             res.render("shop", { results: results });
+//         })
+//         .catch(err => {
+//             res.status(500).json({
+//                 error: err
+//             });
+//         });
+// });
 
 module.exports = router;
