@@ -21,15 +21,17 @@ mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true })
 //     mongooseConnection: connection,
 //     collection: 'sessions'
 // });
-const idle_timout = 60 * 30
-    //Express session 
+// const idle_timout =
+// , ttl: 60 * 60 * 24 * 2 
+// maxAge: +60 * 30
+//Express session 
 app.use(session({
     secret: 'IshMuGia',
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({ mongooseConnection: mongoose.connection, ttl: 60 * 60 * 24 * 2 }),
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
     cookie: {
-        maxAge: +idle_timout
+
     }
     // cookie: {
     //     maxAge: 1000 * 60 * 60 * 24

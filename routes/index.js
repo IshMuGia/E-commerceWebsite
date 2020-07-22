@@ -19,6 +19,63 @@ router.get("/", (req, res) => {
 
 });
 
+router.get("/logged", (req, res) => {
+    if (req.session.email) {
+        Prod.find({}, 'brand s_des img1 mrp model_no -_id')
+            .exec()
+            .then(docs1 => {
+                Prod.find().distinct('brand')
+                    .then(docs2 => {
+                        Prod.find().distinct('sub_brand')
+                            .then(docs3 => {
+                                Prod.find().distinct('model_no')
+                                    .then(docs4 => {
+                                        const docs = docs2.concat(docs3, docs4, docs1)
+                                        console.log(docs)
+                                        res.render('index', { results: docs })
+                                    })
+                                    .catch(err => {
+                                        res.status(500).json({
+                                            error: err
+                                        });
+                                    });
+                            });
+                    })
+                    .catch(err => {
+                        res.status(500).json({
+                            error: err
+                        });
+                    });
+            });
+    } else {
+        res.redirect("/myaccount")
+    }
+
+});
+
+router.get("/myaccount", (req, res) => {
+    if (req.session.email) {
+        res.redirect('/logged');
+
+    } else {
+        const msg1 = "";
+        const msg = "";
+        var rec = new Object();
+        rec.msg1 = msg1;
+        rec.msg = msg;
+        res.render('myaccount', { rec: rec });
+    }
+});
+
+router.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect('/');
+    });
+
+});
 
 // router.get("/", (req, res) => {
 //     Prod.find({}, 'brand s_des img1 mrp model_no -_id')
@@ -255,36 +312,6 @@ router.get("/wishlist", (req, res) => {
         });
 });
 
-router.get("/searchmushira", (req, res) => {
-    var q = req.query.q;
-    //full text 
-    // Product.find({
-    //     $text: {
-    //         $search: q
-    //     }
-    // }, {
-    //     _id: 0,
-    //     _v: 0
-    // }, function(err, data) {
-    //     res.json(data);
-    // });
-
-    //PARTIAL TEXT SEARCH
-
-    Prod.find({
-        model_no: {
-            $regex: new RegExp(q)
-        }
-    }, {
-        _id: 0,
-        _v: 0
-    }, function(err, data) {
-        console.log("Partial Search Begins");
-        console.log(data);
-        res.json(data);
-    }).limit(10);
-});
-
 // Brand Shop
 router.get("/brandshop", (req, res) => {
     Prod.find({ brand: req.query.brand })
@@ -349,66 +376,6 @@ router.get("/subbrandshop", (req, res) => {
   }); */
 // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
 
-//res.render("index");
-
-
-router.get("/login", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    res.render("login");
-});
-
-// router.get("/", (req, res) => {
-//     console.log('hello')
-//     console.log(req.session.email)
-//     if (req.session.email) {
-//         res.redirect('/logged');
-//     } else {
-//         res.redirect("/myaccount");
-//     }
-//     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-// });
-
-router.get("/logged", (req, res) => {
-    if (req.session.email) {
-        Prod.find({}, 'brand s_des img1 mrp model_no -_id')
-            .exec()
-            .then(docs1 => {
-                Prod.find().distinct('brand')
-                    .then(docs2 => {
-                        Prod.find().distinct('sub_brand')
-                            .then(docs3 => {
-                                Prod.find().distinct('model_no')
-                                    .then(docs4 => {
-                                        const docs = docs2.concat(docs3, docs4, docs1)
-                                        console.log(docs)
-                                        res.render('index', { results: docs })
-                                    })
-                                    .catch(err => {
-                                        res.status(500).json({
-                                            error: err
-                                        });
-                                    });
-                            });
-                    })
-                    .catch(err => {
-                        res.status(500).json({
-                            error: err
-                        });
-                    });
-            });
-    }
-
-});
-
-router.get("/myaccount", (req, res) => {
-    // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-    const msg1 = "";
-    const msg = "";
-    var rec = new Object();
-    rec.msg1 = msg1;
-    rec.msg = msg;
-    res.render('myaccount', { rec: rec });
-});
 
 router.get("/shop", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
@@ -438,11 +405,5 @@ router.get("/checkout", (req, res) => {
     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
     res.render("checkout");
 });
-
-
-// router.get("/", (req, res) => {
-//     // return res.sendFile("home.ejs", { root: path.join(__dirname, '/views') });
-//     res.render("index");
-// });
 
 module.exports = router;
