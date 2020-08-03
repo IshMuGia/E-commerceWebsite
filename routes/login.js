@@ -32,9 +32,17 @@ router.post("/", (req, res) => {
                 if (err) throw err
                     //if both match than you can do anything
                 if (data) {
-                    var date = new Date();
-                    var timestamp = date.getTime();
-                    req.session.time=timestamp;
+                    var currentDate = new Date();
+                    var date = currentDate.getDate();
+                    var month = currentDate.getMonth(); //Be careful! January is 0 not 1
+                    var year = currentDate.getFullYear();
+                    var dateString = date + "-" +(month + 1) + "-" + year;
+                    req.session.logdate=dateString;
+                    console.log(req.session.logdate);
+                    /*var timestamp = Date.now();
+                    /*var date = new Date();
+                    req.session.time= timestamp;
+                    console.log(req.session.time)*/
                     console.log("Login success");
                     return res.redirect('/');
                 } else {
