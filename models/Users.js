@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
         required: true
 
     },
+    timestamp: { 
+        type: Date, 
+        default: Date.now
+    }
 });
 
 const User = mongoose.model('User', UserSchema, 'User_info');
