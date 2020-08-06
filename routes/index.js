@@ -133,26 +133,42 @@ router.get("/addtocart", (req, res) => {
 
 router.get("/addtowishlist", (req, res) => {
     var email = req.query.email;
-    var model_no = req.query.model_no; {
-        const newwish = new Wishlist({
-            _id: new mongoose.Types.ObjectId(),
-            model_no: model_no,
-            email: email,
-        });
-        console.log(newwish)
-        newwish
-            .save()
-            .then(Wishlist => {
-                res.redirect('/dproduct/?id=' + req.query.model_no);
-                console.log("Added to Wishlist");
-                console.log(newwish);
-            })
-            .catch(err => {
-                res.status(500).json({
-                    error: err
-                });
+    var model_no = req.query.model_no; 
+    Wishlist.findOne({ model_no })
+    .then(exist => {
+        //if user not exist than return status 400
+        //console.log("User not exist");
+        if (!exist)
+        {
+            const msg = "Product Saved!";
+            const newwish = new Wishlist({
+                _id: new mongoose.Types.ObjectId(),
+                model_no: model_no,
+                email: email,
             });
-    }
+            
+            console.log(newwish)
+            newwish
+                .save()
+                .then(Wishlist => {
+                    res.redirect('/dproduct/?id=' + req.query.model_no);
+                    console.log("Added to Wishlist");
+                    console.log(newwish);
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
+        }
+        if(exist)
+        {
+            const msg = "Product already Exist!";
+        }
+    })
+    .catch(err => console.log(err));
+    
+    
 });
 
 
@@ -340,3 +356,5 @@ router.get("/checkout", (req, res) => {
 // });
 
 module.exports = router;
+
+
