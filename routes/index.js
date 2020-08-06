@@ -136,7 +136,7 @@ router.get("/addtowishlist", (req, res) => {
     var model_no = req.query.model_no; 
     Wishlist.findOne({ model_no })
     .then(exist => {
-        //if user not exist than return status 400
+        //if productexist than return status 400
         //console.log("User not exist");
         if (!exist)
         {
@@ -164,6 +164,8 @@ router.get("/addtowishlist", (req, res) => {
         if(exist)
         {
             const msg = "Product already Exist!";
+            res.send(msg);
+
         }
     })
     .catch(err => console.log(err));
