@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const Act = require('../models/ActivityLog');
 // Load User model
 const User = require('../models/Users');
 //const { forwardAuthenticated } = require('../config/auth');
@@ -14,7 +15,7 @@ router.post("/", (req, res) => {
     var email = req.body.email
     var password = req.body.password
     var phone = req.body.phone
-    console.log(req.body);
+    // console.log(req.body);
     /*if (errors) {
         res.render('register', {
             errors,
@@ -28,7 +29,9 @@ router.post("/", (req, res) => {
         });
     } else {*/
     // validation passed
-    User.findOne({ email: req.body.email })
+    User.findOne({
+            email: req.body.email
+        })
         .then(user => {
             if (user) {
                 res.render('myaccount', {
@@ -54,7 +57,7 @@ router.post("/", (req, res) => {
                     phone: phone
                 });
                 console.log(newUser)
-                    //hash password
+                //hash password
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err) throw err;
@@ -64,7 +67,23 @@ router.post("/", (req, res) => {
                         newUser
                             .save()
                             .then(user => {
-                                res.redirect('/');
+                                var currentDate = new Date();
+                                var date = currentDate.getDate();
+                                var month = currentDate.getMonth(); //Be careful! January is 0 not 1
+                                var year = currentDate.getFullYear();
+                                var dateString = date + "-" + (month + 1) + "-" + year;
+                                req.session.logdate = dateString;
+                                console.log(req.session.logdate);
+                                const newLog = new Act({
+                                    email: req.session.email,
+                                    login: dateString
+                                });
+                                newLog
+                                    .save()
+                                    .then(r => {
+                                        return res.redirect('/');
+                                    });
+
                             })
                     });
                 });

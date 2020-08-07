@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 // Load User model
 const User = require('../models/Users');
+const Act = require('../models/ActivityLog');
 
 //Login handle
 router.post("/", (req, res) => {
@@ -39,12 +40,18 @@ router.post("/", (req, res) => {
                     var dateString = date + "-" +(month + 1) + "-" + year;
                     req.session.logdate=dateString;
                     console.log(req.session.logdate);
-                    /*var timestamp = Date.now();
-                    /*var date = new Date();
-                    req.session.time= timestamp;
-                    console.log(req.session.time)*/
                     console.log("Login success");
-                    return res.redirect('/');
+                    const newLog = new Act({
+                        email: req.session.email,
+                        login: dateString
+                    });
+                    newLog
+                    .save()
+                    .then(r => {
+                        return res.redirect('/');
+                    })
+                    .catch(err => console.log(err));
+                    
                 } else {
                     const msg = "Invalid password";
                     const msg1 = "";
