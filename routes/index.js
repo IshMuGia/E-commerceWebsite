@@ -141,6 +141,7 @@ router.get("/addtowishlist", (req, res) => {
         if (!exist)
         {
             const msg = "Product Saved!";
+            req.session.msg = msg;
             const newwish = new Wishlist({
                 _id: new mongoose.Types.ObjectId(),
                 model_no: model_no,
@@ -164,7 +165,9 @@ router.get("/addtowishlist", (req, res) => {
         if(exist)
         {
             const msg = "Product already Exist!";
-            res.send(msg);
+            //res.send(msg);
+            req.session.msg = msg;
+            res.sendStatus(200)
 
         }
     })
