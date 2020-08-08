@@ -10,7 +10,8 @@ router.get("/", (req, res) => {
     //console.log('hello')
     //console.log(req.session.email)
     if (req.session.email) {
-        res.redirect('/logged');
+        console.log(req.query.id);
+        res.redirect('/logged/?id=' + req.query.id);
     } else {
         res.redirect("/myaccount");
     }
