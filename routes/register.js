@@ -67,16 +67,12 @@ router.post("/", (req, res) => {
                         newUser
                             .save()
                             .then(user => {
-                                var currentDate = new Date();
-                                var date = currentDate.getDate();
-                                var month = currentDate.getMonth(); //Be careful! January is 0 not 1
-                                var year = currentDate.getFullYear();
-                                var dateString = date + "-" + (month + 1) + "-" + year;
-                                req.session.logdate = dateString;
+                                var currentDate = new Date();                                
+                                req.session.logdate = currentDate;
                                 console.log(req.session.logdate);
                                 const newLog = new Act({
                                     email: req.session.email,
-                                    login: dateString
+                                    login: currentDate
                                 });
                                 newLog
                                     .save()

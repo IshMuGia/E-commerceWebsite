@@ -34,16 +34,12 @@ router.post("/", (req, res) => {
                     //if both match than you can do anything
                 if (data) {
                     var currentDate = new Date();
-                    var date = currentDate.getDate();
-                    var month = currentDate.getMonth(); //Be careful! January is 0 not 1
-                    var year = currentDate.getFullYear();
-                    var dateString = date + "-" +(month + 1) + "-" + year;
-                    req.session.logdate=dateString;
+                    req.session.logdate=currentDate;
                     console.log(req.session.logdate);
                     console.log("Login success");
                     const newLog = new Act({
                         email: req.session.email,
-                        login: dateString
+                        login: currentDate
                     });
                     newLog
                     .save()
@@ -70,3 +66,10 @@ router.post("/", (req, res) => {
 });
 
 module.exports = router;
+
+
+                    //console.log(currentDate);
+                    // var date = currentDate.getDate();
+                    // var month = currentDate.getMonth(); //Be careful! January is 0 not 1
+                    // var year = currentDate.getFullYear();
+                    // var dateString = date + "-" +(month + 1) + "-" + year;
