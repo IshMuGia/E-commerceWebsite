@@ -175,8 +175,8 @@ router.get("/addtowishlist", (req, res) => {
             //if productexist than return status 400
             //console.log("User not exist");
             if (!exist) {
-                const msg = "Product Saved!";
-                req.session.msg = msg;
+                const alert = "Product Saved!";
+                req.session.alert = alert;
                 const newwish = new Wishlist({
                     _id: new mongoose.Types.ObjectId(),
                     model_no: model_no,
@@ -198,9 +198,9 @@ router.get("/addtowishlist", (req, res) => {
                     });
             }
             if (exist) {
-                const msg = "Product already Exist!";
-                //res.send(msg);
-                req.session.msg = msg;
+                const alert = "Product already Exist!";
+                //res.send(alert);
+                req.session.alert = alert;
                 res.sendStatus(200)
 
             }
