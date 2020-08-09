@@ -44,8 +44,8 @@ router.post("/", (req, res) => {
                     newLog
                     .save()
                     .then(r => {
-                        //console.log(r._id)
-                        return res.redirect('/');
+                        console.log(user._id)
+                        return res.redirect('/?uid=' + user._id);
                     })
                     //return res.redirect('/?uid=' + r._id);
 

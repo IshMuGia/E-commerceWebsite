@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     //console.log(req.session.email)
     if (req.session.email) {
         //console.log(req.query.id);
-        res.redirect('/logged');
+        res.redirect('/logged/?uid=' + req.query.uid);
     } else {
         res.redirect("/myaccount");
     }
@@ -72,7 +72,7 @@ router.get("/myaccount", (req, res) => {
 
 router.get('/logout', (req, res) => {
     var currentDate = new Date();
-    console.log(currentDate);
+    //console.log(currentDate);
     var myquery = {
         email: req.session.email
     };
@@ -84,7 +84,7 @@ router.get('/logout', (req, res) => {
     console.log(newvalues);
     Act.updateOne(myquery, newvalues, function (err, result) {
         if (err) throw err;
-        console.log(result);
+        //console.log(result);
         req.session.destroy((err) => {
             if (err) {
                 return console.log(err);

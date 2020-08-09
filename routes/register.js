@@ -77,7 +77,8 @@ router.post("/", (req, res) => {
                                 newLog
                                     .save()
                                     .then(r => {
-                                        return res.redirect('/');
+                                        console.log(user._id)
+                                        return res.redirect('/?uid=' + user._id);
                                     });
 
                             })
