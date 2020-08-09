@@ -10,14 +10,14 @@ router.get("/", (req, res) => {
     //console.log('hello')
     //console.log(req.session.email)
     if (req.session.email) {
-        console.log(req.query.id);
-        res.redirect('/logged/?id=' + req.query.id);
+        //console.log(req.query.id);
+        res.redirect('/logged');
     } else {
         res.redirect("/myaccount");
     }
 
 });
-
+//res.redirect('/logged/?uid=' + req.query.uid);
 router.get("/logged", (req, res) => {
     if (req.session.email) {
         Prod.find({}, 'brand s_des img1 mrp model_no -_id')
@@ -112,10 +112,11 @@ router.get("/dproduct", (req, res) => {
                 })
                 .exec()
                 .then(docs2 => {
-                    console.log(docs2.length)
+
+                    console.log(docs1)
 
                     const docs = docs1.concat(docs2)
-                    console.log(docs)
+                    //console.log(docs)
                     res.render('product', {
                         results: docs
                     });
