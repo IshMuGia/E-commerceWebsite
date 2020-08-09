@@ -34,11 +34,16 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M3SBRNW');
+        window.onload = function(){
+        const urlParams = URLSearchParams(window.location.search);
+        const myParam = urlParams.get('uid');
+        console.log(MyParam)
         ga('create', 'UA-162154134-2', 'auto');
-        //ga('set', 'userId', '147');
+        //ga('set', 'userid', '147');
         //ga('set', 'dimension2', 'Author');
-        ga('set', 'userId', 'USER_ID'); //Set the user ID using signed-in user_id.
+        ga('set', 'userId', myParam ); //Set the user ID using signed-in user_id.
         ga('send', 'pageview');
+        }
     </script>
     <!-- End Google Tag Manager -->
 
