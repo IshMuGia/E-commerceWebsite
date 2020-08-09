@@ -36,12 +36,13 @@
         })(window, document, 'script', 'dataLayer', 'GTM-M3SBRNW');
         window.onload = function(){
         const urlParams = URLSearchParams(window.location.search);
-        const myParam = urlParams.get('uid');
-        console.log(MyParam)
+        const USER_ID = urlParams.get('uid');
+        console.log(USER_ID)
         ga('create', 'UA-162154134-2', 'auto');
         //ga('set', 'userid', '147');
         //ga('set', 'dimension2', 'Author');
-        ga('set', 'userId', myParam ); //Set the user ID using signed-in user_id.
+        ga('set', 'userId', USER_ID ); //Set the user ID using signed-in user_id.
+        console.log(USER_ID);
         ga('send', 'pageview');
         }
     </script>
