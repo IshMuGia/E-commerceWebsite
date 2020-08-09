@@ -202,9 +202,13 @@ router.get("/addtowishlist", (req, res) => {
                 newwish
                     .save()
                     .then(Wishlist => {
+                    const alert = "Product added to Saved Products";
+                //res.send(alert);
+                req.session.alert = alert;
                         res.redirect('/dproduct/?id=' + req.query.model_no);
                         console.log("Added to Wishlist");
                         console.log(newwish);
+                    
                     })
                     .catch(err => {
                         res.status(500).json({
@@ -213,10 +217,10 @@ router.get("/addtowishlist", (req, res) => {
                     });
             }
             if (exist) {
-                const alert = "Product already Exist!";
+                const alert = "Product already exists in Saved!";
                 //res.send(alert);
                 req.session.alert = alert;
-                res.sendStatus(200)
+                res.redirect('/dproduct/?id=' + req.query.model_no);
 
             }
         })
