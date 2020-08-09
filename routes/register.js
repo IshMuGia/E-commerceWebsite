@@ -67,10 +67,14 @@ router.post("/", (req, res) => {
                         newUser
                             .save()
                             .then(user => {
+                                req.session.email = req.body.email
+                                req.session.password = req.body.password
                                 req.session.uid = user._id;
-                                var currentDate = new Date();                                
+                                const m = "Save Product";
+                                req.session.msg = m
+                                var currentDate = new Date();
                                 req.session.logdate = currentDate;
-                                console.log(req.session.logdate);
+                                //console.log(req.session.logdate);
                                 const newLog = new Act({
                                     email: req.session.email,
                                     login: currentDate

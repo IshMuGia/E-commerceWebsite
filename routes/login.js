@@ -11,12 +11,13 @@ const Act = require('../models/ActivityLog');
 router.post("/", (req, res) => {
     var email = req.body.email
     var password = req.body.password
-    req.session.email = email
-    req.session.password = password
+
     console.log(req.body);
-    User.findOne({ email })
+    User.findOne({
+            email
+        })
         .then(user => {
-            req.session.uid = user._id;
+
             //if user not exist than return status 400
             //console.log("User not exist");
             const msg = "User not exist";
@@ -25,17 +26,24 @@ router.post("/", (req, res) => {
             rec.msg1 = msg1;
             rec.msg = msg;
 
-            if (!user) return res.render('myaccount', { rec: rec });;
+            if (!user) return res.render('myaccount', {
+                rec: rec
+            });;
             //if user exist than compare password
             //password comes from the user
             //user.password comes from the database
             bcrypt.compare(password, user.password, (err, data) => {
                 //if error than throw error
                 if (err) throw err
-                    //if both match than you can do anything
+                //if both match than you can do anything
                 if (data) {
+                    req.session.email = email
+                    req.session.password = password
+                    req.session.uid = user._id;
+                    const m = "Save Product";
+                    req.session.msg = m
                     var currentDate = new Date();
-                    req.session.logdate=currentDate;
+                    req.session.logdate = currentDate;
                     console.log(req.session.logdate);
                     console.log("Login success");
                     const newLog = new Act({
@@ -43,15 +51,15 @@ router.post("/", (req, res) => {
                         login: currentDate
                     });
                     newLog
-                    .save()
-                    .then(r => {
-                        console.log(user._id)
-                        return res.redirect('/?uid=' + user._id);
-                    })
-                    //return res.redirect('/?uid=' + r._id);
+                        .save()
+                        .then(r => {
+                            console.log(user._id)
+                            return res.redirect('/?uid=' + user._id);
+                        })
+                        //return res.redirect('/?uid=' + r._id);
 
-                    .catch(err => console.log(err));
-                    
+                        .catch(err => console.log(err));
+
                 } else {
                     const msg = "Invalid password";
                     const msg1 = "";
@@ -59,7 +67,9 @@ router.post("/", (req, res) => {
                     rec.msg1 = msg1;
                     rec.msg = msg;
 
-                    return res.render('myaccount', { rec: rec });
+                    return res.render('myaccount', {
+                        rec: rec
+                    });
                 }
             });
         })
@@ -69,8 +79,8 @@ router.post("/", (req, res) => {
 module.exports = router;
 
 
-                    //console.log(currentDate);
-                    // var date = currentDate.getDate();
-                    // var month = currentDate.getMonth(); //Be careful! January is 0 not 1
-                    // var year = currentDate.getFullYear();
-                    // var dateString = date + "-" +(month + 1) + "-" + year;
+//console.log(currentDate);
+// var date = currentDate.getDate();
+// var month = currentDate.getMonth(); //Be careful! January is 0 not 1
+// var year = currentDate.getFullYear();
+// var dateString = date + "-" +(month + 1) + "-" + year;
