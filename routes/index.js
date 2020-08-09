@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     //console.log(req.session.email)
     if (req.session.email) {
         //console.log(req.query.id);
-        res.redirect('/logged/?uid=' + req.query.uid);
+        res.redirect('/logged/?uid=' + req.session.uid);
     } else {
         res.redirect("/myaccount");
     }
@@ -102,19 +102,27 @@ router.get("/dproduct", (req, res) => {
         })
         .exec()
         .then(docs1 => {
-
-            Rev.find({
+            console.log(docs1[0].brand);
+            Prod.find({
+                brand: docs1[0].brand
+            })
+            .exec()
+            .then(rel=>{
+                rel = rel.slice(0, 6);
+                //console.log(rel.length);
+                const docs = docs1.concat(rel)
+                Rev.find({
                     product: id
                 })
                 .exec()
                 .then(docs2 => {
 
-                    console.log(docs1)
+                    //console.log(docs1)
 
-                    const docs = docs1.concat(docs2)
-                    //console.log(docs)
+                    const document = docs.concat(docs2)
+                    console.log(document.length);
                     res.render('product', {
-                        results: docs
+                        results: document
                     });
                 })
                 .catch(err => {
@@ -122,6 +130,13 @@ router.get("/dproduct", (req, res) => {
                         error: err
                     });
                 });
+
+            })
+            .catch(err => {
+                res.status(500).json({
+                    error: err
+                });
+            });
 
         })
         .catch(err => {
