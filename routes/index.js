@@ -10,14 +10,14 @@ router.get("/", (req, res) => {
     //console.log('hello')
     //console.log(req.session.email)
     if (req.session.email) {
-        console.log(req.query.id);
-        res.redirect('/logged/?id=' + req.query.id);
+        //console.log(req.query.id);
+        res.redirect('/logged/?uid=' + req.query.uid);
     } else {
         res.redirect("/myaccount");
     }
 
 });
-
+//res.redirect('/logged/?uid=' + req.query.uid);
 router.get("/logged", (req, res) => {
     if (req.session.email) {
         Prod.find({}, 'brand s_des img1 mrp model_no -_id')
@@ -72,23 +72,19 @@ router.get("/myaccount", (req, res) => {
 
 router.get('/logout', (req, res) => {
     var currentDate = new Date();
-    var date = currentDate.getDate();
-    var month = currentDate.getMonth(); //Be careful! January is 0 not 1
-    var year = currentDate.getFullYear();
-    var dateString = date + "-" + (month + 1) + "-" + year;
-    console.log(dateString);
+    //console.log(currentDate);
     var myquery = {
         email: req.session.email
     };
     var newvalues = {
         $set: {
-            logout: dateString
+            logout: currentDate
         }
     };
     console.log(newvalues);
     Act.updateOne(myquery, newvalues, function (err, result) {
         if (err) throw err;
-        //console.log(res.result.nModified + " document(s) updated");
+        //console.log(result);
         req.session.destroy((err) => {
             if (err) {
                 return console.log(err);
@@ -112,10 +108,11 @@ router.get("/dproduct", (req, res) => {
                 })
                 .exec()
                 .then(docs2 => {
-                    console.log(docs2.length)
+
+                    console.log(docs1)
 
                     const docs = docs1.concat(docs2)
-                    console.log(docs)
+                    //console.log(docs)
                     res.render('product', {
                         results: docs
                     });
