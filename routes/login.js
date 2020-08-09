@@ -41,7 +41,7 @@ router.post("/", (req, res) => {
                     req.session.password = password
                     req.session.uid = user._id;
                     const m = "Save Product";
-                    req.session.msg = m
+                    req.session.alert = m
                     var currentDate = new Date();
                     req.session.logdate = currentDate;
                     console.log(req.session.logdate);
