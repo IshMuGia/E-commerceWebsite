@@ -16,6 +16,7 @@ router.post("/", (req, res) => {
     console.log(req.body);
     User.findOne({ email })
         .then(user => {
+            req.session.uid = user._id;
             //if user not exist than return status 400
             //console.log("User not exist");
             const msg = "User not exist";

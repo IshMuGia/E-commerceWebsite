@@ -67,6 +67,7 @@ router.post("/", (req, res) => {
                         newUser
                             .save()
                             .then(user => {
+                                req.session.uid = user._id;
                                 var currentDate = new Date();                                
                                 req.session.logdate = currentDate;
                                 console.log(req.session.logdate);
