@@ -19,8 +19,11 @@
     </script>
     <script>
     window.dataLayer = window.dataLayer || [];
+    window.onload = function(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const USER_ID = urlParams.get('uid');
         dataLayer = [{
-          'userId': '12345'
+          'userId': USER_ID
         }];
     </script>  
     <!-- Data Layer
