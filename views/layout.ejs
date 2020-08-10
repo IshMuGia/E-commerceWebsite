@@ -21,7 +21,7 @@
     window.dataLayer = window.dataLayer || [];
         var uid= '<% = session["user.id"] %>'
         dataLayer = [{
-          'userId': uid
+          'userId': '' + uid,
         }];
     </script>  
     <!-- Data Layer
