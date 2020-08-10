@@ -19,11 +19,9 @@
     </script>
     <script>
     window.dataLayer = window.dataLayer || [];
-    window.onload = function(){
-        const urlParams = new URLSearchParams(window.location.search);
-        const USER_ID = urlParams.get('uid');
+        var uid= '<% = session["user.id"] %>'
         dataLayer = [{
-          'userId': 'USER_ID'
+          'userId': uid
         }];
     </script>  
     <!-- Data Layer
