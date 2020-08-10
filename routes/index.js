@@ -105,26 +105,26 @@ router.get("/dproduct", (req, res) => {
         })
         .exec()
         .then(docs1 => {
-            console.log(docs1[0].brand);
+            //console.log(docs1);
             Prod.find({
                 brand: docs1[0].brand
             })
             .exec()
             .then(rel=>{
-                rel = rel.slice(0, 6);
+                
+                rel = rel.slice(0, 6);                
                 //console.log(rel.length);
-                const docs = docs1.concat(rel)
-                const m = "Save Product";
-                docs = docs.concat(m)
+                const docs = docs1.concat(rel)                
+                docs[7] = {"alert": "Save Product"};
+
                 Rev.find({
                     product: id
                 })
                 .exec()
                 .then(docs2 => {
-
-                    //console.log(docs1)
-
+                    //console.log("ksddhlkf");
                     const document = docs.concat(docs2)
+                    //console.log(document)
                     console.log(document.length);
                     res.render('product', {
                         results: document
