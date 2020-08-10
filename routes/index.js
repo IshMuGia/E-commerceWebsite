@@ -29,12 +29,15 @@ router.get("/logged", (req, res) => {
                             .then(docs3 => {
                                 Prod.find().distinct('model_no')
                                     .then(docs4 => {
-                                        const docs = docs2.concat(docs3, docs4, docs1)
-                                        // console.log(docs)
-                                        res.render('index', {
-                                            results: docs
-                                        })
+                                        Prod.find().distinct('s_des')
+                                            .then(docs5 => {
+                                                const docs = docs2.concat(docs3, docs4, docs5, docs1)
+                                                // console.log(docs)
+                                                res.render('index', {
+                                                results: docs
+                                             })
                                     })
+                            })
                                     .catch(err => {
                                         res.status(500).json({
                                             error: err
@@ -204,13 +207,9 @@ router.get("/addtowishlist", (req, res) => {
                 newwish
                     .save()
                     .then(Wishlist => {
-                    const alert = "Product added to Saved Products";
-                //res.send(alert);
-                req.session.alert = alert;
                         res.redirect('/dproduct/?id=' + req.query.model_no);
                         console.log("Added to Wishlist");
                         console.log(newwish);
-                    
                     })
                     .catch(err => {
                         res.status(500).json({
@@ -219,10 +218,10 @@ router.get("/addtowishlist", (req, res) => {
                     });
             }
             if (exist) {
-                const alert = "Product already exists in Saved!";
+                const alert = "Product already Exist!";
                 //res.send(alert);
                 req.session.alert = alert;
-                res.redirect('/dproduct/?id=' + req.query.model_no);
+                res.sendStatus(200)
 
             }
         })
@@ -396,6 +395,7 @@ router.get("/checkout", (req, res) => {
 //         })
 //         .catch(err => console.log(err));
 // });
+
 // router.get("/list", (req, res) => {
 //     Prod.find().distinct('brand')
 //         .then(docs1 => {

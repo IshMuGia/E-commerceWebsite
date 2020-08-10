@@ -18,7 +18,7 @@ router.post("/", (req, res) => {
             .then(Search => {
                 console.log("Added to Search Collection");
             })
-        Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }] })
+        Prod.find({ $or: [{ brand: word }, { sub_brand: word }, { model_no: word }, { s_des: word }]  })
             .exec()
             .then(results => {
                 if (results) {
