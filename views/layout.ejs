@@ -18,6 +18,15 @@
 
         gtag('config', 'UA-162154134-2');
     </script>
+    <!-- Data Layer
+   <script>
+        window.dataLayer = window.dataLayer || [];
+        const urlParams = URLSearchParams(window.location.search);
+        const USER_ID = urlParams.get('uid');
+        dataLayer = [{
+          'userId': 'USER_ID'
+        }];
+      </script> -->
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -34,12 +43,33 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M3SBRNW');
+        window.onload = function(){
+        const urlParams = URLSearchParams(window.location.search);
+        const USER_ID = urlParams.get('uid');
+        console.log(USER_ID)
+        ga('create', 'UA-162154134-2', 'auto');
+        //ga('set', 'userid', '147');
+        //ga('set', 'dimension2', 'Author');
+        ga('set', 'userId', USER_ID ); //Set the user ID using signed-in user_id.
+        console.log(USER_ID);
+        ga('send', 'pageview');
+        }
+        /*window.onload = function(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const USER_ID = urlParams.get('uid');
+        ga('create', 'UA-162154134-2', 'auto');
+        //ga('set', 'userid', '147');
+        //ga('set', 'dimension2', 'Author');
+        ga('set', 'userId', USER_ID ); //Set the user ID using signed-in user_id
+        ga('send', 'pageview');
+        }*/
     </script>
     <!-- End Google Tag Manager -->
 
     <!-- Title -->
-    <title>E-Commerce Website</title>
-
+    <title>ElectronicX</title>
+<link rel="icon" href="https://drive.google.com/uc?export=view&id=1B1JtS_R0pDrhF_0qz9fj4J-LTFBIAMUz" type = "image/x-icon">
+    
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
