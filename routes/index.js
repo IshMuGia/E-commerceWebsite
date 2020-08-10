@@ -111,6 +111,8 @@ router.get("/dproduct", (req, res) => {
                 rel = rel.slice(0, 6);
                 //console.log(rel.length);
                 const docs = docs1.concat(rel)
+                const m = "Save Product";
+                docs = docs.concat(m)
                 Rev.find({
                     product: id
                 })
