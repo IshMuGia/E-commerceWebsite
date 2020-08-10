@@ -5,16 +5,9 @@
 <!-- /Added by HTTrack -->
 
 <head>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-        dataLayer = [{
-          'Author': 'authorname'
-        }];
-    </script>  
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162154134-2"></script>
     <script>
-        
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -35,7 +28,7 @@
       </script> -->
     <!-- Google Tag Manager -->
     <script>
-        (function(w, d, s, l, i) {
+        (function (w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 'gtm.start': new Date().getTime(),
@@ -49,7 +42,21 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M3SBRNW');
+<<<<<<< HEAD
         
+=======
+        window.onload = function () {
+            const urlParams = URLSearchParams(window.location.search);
+            const USER_ID = urlParams.get('uid');
+            console.log(USER_ID)
+            ga('create', 'UA-162154134-2', 'auto');
+            //ga('set', 'userid', '147');
+            //ga('set', 'dimension2', 'Author');
+            ga('set', 'userId', USER_ID); //Set the user ID using signed-in user_id.
+            console.log(USER_ID);
+            ga('send', 'pageview');
+        }
+>>>>>>> fd0e66c50410cdad24939cbb958a372bc1eb3c11
         /*window.onload = function(){
         const urlParams = new URLSearchParams(window.location.search);
         const USER_ID = urlParams.get('uid');
@@ -64,8 +71,9 @@
 
     <!-- Title -->
     <title>ElectronicX</title>
-<link rel="icon" href="https://drive.google.com/uc?export=view&id=1B1JtS_R0pDrhF_0qz9fj4J-LTFBIAMUz" type = "image/x-icon">
-    
+    <link rel="icon" href="https://drive.google.com/uc?export=view&id=1W_m7ZrungedfKanz5DbGco-eL8m0zlBk"
+        type="image/x-icon">
+
     <!-- Required Meta Tags Always Come First -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -74,7 +82,9 @@
     <link rel="shortcut icon" href="../favicon.png">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;display=swap"
+        rel="stylesheet">
 
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="/vendor/font-awesome/css/fontawesome-all.min.css">
@@ -96,8 +106,8 @@
         <%- body %>
     </div>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3SBRNW"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3SBRNW" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- JS Global Compulsory -->
@@ -142,7 +152,7 @@
 
     <!-- JS Plugins Init. -->
     <script>
-        $(window).on('load', function() {
+        $(window).on('load', function () {
             // initialization of HSMegaMenu component
             $('.js-mega-menu').HSMegaMenu({
                 event: 'hover',
@@ -153,7 +163,7 @@
             });
         });
 
-        $(document).on('ready', function() {
+        $(document).on('ready', function () {
             // initialization of header
             $.HSCore.components.HSHeader.init($('#header'));
 
@@ -162,7 +172,7 @@
 
             // initialization of unfold component
             $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-                afterOpen: function() {
+                afterOpen: function () {
                     $(this).find('input[type="search"]').focus();
                 }
             });
@@ -223,15 +233,15 @@
 
             // initialization of unfold component
             $.HSCore.components.HSUnfold.init($('[data-unfold-target]'), {
-                beforeClose: function() {
+                beforeClose: function () {
                     $('#hamburgerTrigger').removeClass('is-active');
                 },
-                afterClose: function() {
+                afterClose: function () {
                     $('#headerSidebarList .collapse.show').collapse('hide');
                 }
             });
 
-            $('#headerSidebarList [data-toggle="collapse"]').on('click', function(e) {
+            $('#headerSidebarList [data-toggle="collapse"]').on('click', function (e) {
                 e.preventDefault();
 
                 var target = $(this).data('target');

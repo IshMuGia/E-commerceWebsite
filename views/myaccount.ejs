@@ -9,12 +9,19 @@
                     <!-- Logo-offcanvas-menu -->
                     <div class="col-auto">
                         <!-- Nav -->
-                        <nav class="navbar navbar-expand u-header__navbar py-0 justify-content-xl-between max-width-270 min-width-270">
+                        <nav
+                            class="navbar navbar-expand u-header__navbar py-0 justify-content-xl-between max-width-270 min-width-270">
                             <!-- Logo -->
-                            <a class="order-1 order-xl-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-center" href="https://transvelo.github.io/electro-html/2.0/html/home/index.html" aria-label="Electro">
-                                <svg version="1.1" x="0px" y="0px" width="175.748px" height="42.52px" viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52" style="margin-bottom: 0;">
-                                            <ellipse class="ellipse-bg" fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700" cx="170.05" cy="36.341" rx="5.32" ry="5.367"></ellipse>
-                                            <path fill-rule="evenodd" clip-rule="evenodd" fill="#333E48" d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
+                            <a class="order-1 order-xl-0 navbar-brand u-header__navbar-brand u-header__navbar-brand-center"
+                                href="https://transvelo.github.io/electro-html/2.0/html/home/index.html"
+                                aria-label="Electro">
+                                <svg version="1.1" x="0px" y="0px" width="175.748px" height="42.52px"
+                                    viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52"
+                                    style="margin-bottom: 0;">
+                                    <ellipse class="ellipse-bg" fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700"
+                                        cx="170.05" cy="36.341" rx="5.32" ry="5.367"></ellipse>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" fill="#333E48"
+                                        d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
                                                 C30.263,0.995,29.876,1.181,29.79,1.5c-0.148,0.548,0,1.568,0,2.427v36.459c0.265,0.221,0.506,0.465,0.725,0.734h6.187
                                                 c0.2-0.25,0.423-0.477,0.669-0.678V1.387C37.124,1.185,36.9,0.959,36.701,0.71H30.514z M117.517,12.731
                                                 c-0.232-0.189-0.439-0.64-0.781-0.734c-0.754-0.209-2.039,0-3.121,0h-3.176V4.435c-0.232-0.189-0.439-0.639-0.781-0.733
@@ -49,25 +56,27 @@
                                                 c0.404-1.031-0.365-1.502-0.891-2.088c-2.543-2.835-6.66-5.377-11.704-5.137c-6.02,0.288-10.218,3.697-12.484,7.846
                                                 c-1.293,2.365-1.951,5.158-1.729,8.408c0.209,3.053,1.191,5.496,2.619,7.508c2.842,4.004,7.385,6.973,13.656,6.377
                                                 c5.976-0.568,9.574-3.936,11.816-8.354c-0.141-0.271-0.221-0.604-0.336-0.902C92.929,31.364,90.843,30.485,88.812,29.55z">
-                                            </path>
-                                        </svg>
+                                    </path>
+                                </svg>
                             </a>
                             <!-- End Logo -->
                         </nav>
                         <!-- End Nav -->
                     </div>
                     <!-- End Logo-offcanvas-menu -->
-                    
+
                     <!-- Customer Care -->
                     <div class="d-none d-xl-block ml-auto">
                         <div class="d-flex">
                             <i class="ec ec-support font-size-50 "></i>
                             <div class="ml-2">
                                 <div class="phone">
-                                    <strong>Support</strong> <a href="tel:800856800604" class="text-gray-90">(+800) 856 800 604</a>
+                                    <strong>Support</strong> <a href="tel:800856800604" class="text-gray-90">(+800) 856
+                                        800 604</a>
                                 </div>
                                 <div class="email">
-                                    E-mail: <a href="mailto:info@electro.com?subject=Help Need" class="text-gray-90">info@electro.com</a>
+                                    E-mail: <a href="mailto:info@electro.com?subject=Help Need"
+                                        class="text-gray-90">info@electro.com</a>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +86,9 @@
                     <div class="d-xl-none col col-xl-auto text-right text-xl-left pl-0 pl-xl-3 position-static">
                         <div class="d-inline-flex">
                             <ul class="d-flex list-unstyled mb-0 align-items-center">
-                                <li class="col"><a href="#" class="text-gray-90" data-toggle="tooltip" data-placement="top" title="My Account"><i class="font-size-22 ec ec-user"></i></a></li>
+                                <li class="col"><a href="#" class="text-gray-90" data-toggle="tooltip"
+                                        data-placement="top" title="My Account"><i
+                                            class="font-size-22 ec ec-user"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -86,7 +97,7 @@
             </div>
         </div>
         <!-- End Logo and Menu -->
-        
+
         <!-- End Vertical-and-secondary-menu -->
     </div>
 </header>
@@ -110,53 +121,65 @@
                     <p class="text-gray-90 mb-4">Welcome back! Sign in to your account.</p>
                     <!-- End Title -->
                     <% if (rec.msg!="") {%>
-                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <strong><%=rec.msg %></strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <strong><%=rec.msg %></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
                         </button>
+                    </div>
+                    <% } %>
+                    <form class="js-validate" novalidate="novalidate" action="/login" method="post">
+                        <!-- Form Group -->
+                        <div class="js-form-message form-group">
+                            <label class="form-label" for="signinSrEmailExample3">Username or Email address
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input type="email" class="form-control" name="email" id="signinSrEmailExample3"
+                                placeholder="Username or Email address" aria-label="Username or Email address" required
+                                data-msg="Please enter a valid email address." data-error-class="u-has-error"
+                                data-success-class="u-has-success">
                         </div>
-                        <% } %>
-                            <form class="js-validate" novalidate="novalidate" action="/login" method="post">
-                                <!-- Form Group -->
-                                <div class="js-form-message form-group">
-                                    <label class="form-label" for="signinSrEmailExample3">Username or Email address
-                                        <span class="text-danger">*</span>
-                                    </label>
-                                    <input type="email" class="form-control" name="email" id="signinSrEmailExample3" placeholder="Username or Email address" aria-label="Username or Email address" required data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
-                                </div>
-                                <!-- End Form Group -->
+                        <!-- End Form Group -->
 
-                                <!-- Form Group -->
-                                <div class="js-form-message form-group">
-                                    <label class="form-label" for="signinSrPasswordExample2">Password <span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="password" id="signinSrPasswordExample2" placeholder="Password" aria-label="Password" required data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success">
-                                </div>
-                                <!-- End Form Group -->
+                        <!-- Form Group -->
+                        <div class="js-form-message form-group">
+                            <label class="form-label" for="signinSrPasswordExample2">Password <span
+                                    class="text-danger">*</span></label>
+                            <input type="password" class="form-control" name="password" id="signinSrPasswordExample2"
+                                placeholder="Password" aria-label="Password" required
+                                data-msg="Your password is invalid. Please try again." data-error-class="u-has-error"
+                                data-success-class="u-has-success">
+                        </div>
+                        <!-- End Form Group -->
 
-                                <!-- Button -->
-                                <div class="mb-1">
-                                    <div class="mb-3">
-                                        <button type="submit" class="btn btn-primary-dark-w px-5">Login</button>
-                                    </div>
-                                    <div class="mb-2">
-                                        <a class="text-blue" href="#">Lost your password?</a>
-                                    </div>
-                                </div>
-                                <!-- End Button -->
-                            </form>
-                            <br> <br> <br>
-                            <h3 class="font-size-18 mb-3">Sign up today and you will be able to :</h3>
-                            <ul class="list-group list-group-borderless">
-                                <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Speed your way through checkout</li>
-                                <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Track your orders easily</li>
-                                <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Keep a record of all your purchases</li>
-                            </ul>
+                        <!-- Button -->
+                        <div class="mb-1">
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary-dark-w px-5">Login</button>
+                            </div>
+                            <div class="mb-2">
+                                <a class="text-blue" href="#">Lost your password?</a>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+                    </form>
+                    <br> <br> <br>
+                    <h3 class="font-size-18 mb-3">Sign up today and you will be able to :</h3>
+                    <ul class="list-group list-group-borderless">
+                        <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Speed
+                            your way through checkout</li>
+                        <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Track
+                            your orders easily</li>
+                        <li class="list-group-item px-0"><i class="fas fa-check mr-2 text-green font-size-16"></i> Keep
+                            a record of all your purchases</li>
+                    </ul>
                 </div>
                 <div class="col-md-1 d-none d-md-block">
                     <div class="flex-content-center h-100">
                         <div class="width-1 bg-1 h-100"></div>
-                        <div class="width-50 height-50 border border-color-1 rounded-circle flex-content-center font-italic bg-white position-absolute">or</div>
+                        <div
+                            class="width-50 height-50 border border-color-1 rounded-circle flex-content-center font-italic bg-white position-absolute">
+                            or</div>
                     </div>
                 </div>
                 <div class="col-md-5 ml-md-auto ml-xl-0 mr-xl-auto">
@@ -164,96 +187,116 @@
                     <div class="border-bottom border-color-1 mb-6">
                         <h3 class="d-inline-block section-title mb-0 pb-2 font-size-26">Register</h3>
                     </div>
-                    <p class="text-gray-90 mb-4">Create new account today to reap the benefits of a personalized shopping experience.</p>
+                    <p class="text-gray-90 mb-4">Create new account today to reap the benefits of a personalized
+                        shopping experience.</p>
                     <!-- End Title -->
                     <% if (rec.msg1!="") {%>
-                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <strong><%=rec.msg1 %></strong>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <strong><%=rec.msg1 %></strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
                         </button>
-                        </div>
-                        <% } %>
-                            <!-- Contacts Form -->
-                            <form class="js-validate" action="/register" method="post">
-                                <div class="row">
-                                    <!-- Input -->
-                                    <div class="col-sm-6 mb-6">
-                                        <div class="js-form-message">
-                                            <label class="form-label">
-          Your first name
-          <span class="text-danger">*</span>
-        </label>
+                    </div>
+                    <% } %>
+                    <!-- Contacts Form -->
+                    <form class="js-validate" action="/register" method="post">
+                        <div class="row">
+                            <!-- Input -->
+                            <div class="col-sm-6 mb-6">
+                                <div class="js-form-message">
+                                    <label class="form-label">
+                                        Your first name
+                                        <span class="text-danger">*</span>
+                                    </label>
 
-                                            <input type="text" class="form-control" name="fname" placeholder="First name" aria-label="First name" required data-msg="Please enter your first name." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        </div>
-                                    </div>
-                                    <!-- End Input -->
-
-                                    <!-- Input -->
-                                    <div class="col-sm-6 mb-6">
-                                        <div class="js-form-message">
-                                            <label class="form-label">
-          Your last name
-          <span class="text-danger">*</span>
-        </label>
-
-                                            <input type="text" class="form-control" name="lname" placeholder="Last name" aria-label="Last name" required data-msg="Please enter your last name." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        </div>
-                                    </div>
-                                    <!-- End Input -->
-
-                                    <!-- Input -->
-                                    <div class="col-sm-6 mb-6">
-                                        <div class="js-form-message">
-                                            <label class="form-label">
-          Your email address
-          <span class="text-danger">*</span>
-        </label>
-
-                                            <input type="email" class="form-control" name="email" placeholder="Email address" aria-label="Email address" required data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        </div>
-                                    </div>
-                                    <!-- End Input -->
-
-                                    <!-- Input -->
-                                    <div class="col-sm-6 mb-6">
-                                        <div class="js-form-message">
-                                            <label class="form-label">
-          Your Phone Number
-          <span class="text-danger">*</span>
-        </label>
-
-                                            <input type="number" class="form-control" name="phone" placeholder="Phone" aria-label="Phone number" required data-msg="Please enter a valid phone number." data-error-class="u-has-error" data-success-class="u-has-success">
-                                        </div>
-                                    </div>
-                                    <!-- End Input -->
+                                    <input type="text" class="form-control" name="fname" placeholder="First name"
+                                        aria-label="First name" required data-msg="Please enter your first name."
+                                        data-error-class="u-has-error" data-success-class="u-has-success">
                                 </div>
+                            </div>
+                            <!-- End Input -->
 
-                                <!-- Form Group -->
-                                <div class="js-form-message form-group">
-                                    <label class="form-label" for="signinSrPasswordExample2">Password<span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="password" id="signupPassword" placeholder="Password" aria-label="Password" required data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success">
+                            <!-- Input -->
+                            <div class="col-sm-6 mb-6">
+                                <div class="js-form-message">
+                                    <label class="form-label">
+                                        Your last name
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="text" class="form-control" name="lname" placeholder="Last name"
+                                        aria-label="Last name" required data-msg="Please enter your last name."
+                                        data-error-class="u-has-error" data-success-class="u-has-success">
                                 </div>
-                                <!-- End Form Group -->
+                            </div>
+                            <!-- End Input -->
 
-                                <!-- Form Group -->
-                                <div class="js-form-message form-group">
-                                    <label class="form-label" for="signinSrConfirmPassword">Confirm password<span class="text-danger">*</span></label>
-                                    <input type="password" class="form-control" name="confirmPassword" id="signupConfirmPassword" placeholder="Confirm password" aria-label="Confirm password" required data-msg="Password does not match the confirm password." data-error-class="u-has-error"
+                            <!-- Input -->
+                            <div class="col-sm-6 mb-6">
+                                <div class="js-form-message">
+                                    <label class="form-label">
+                                        Your email address
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="email" class="form-control" name="email" placeholder="Email address"
+                                        aria-label="Email address" required
+                                        data-msg="Please enter a valid email address." data-error-class="u-has-error"
                                         data-success-class="u-has-success">
                                 </div>
-                                <!-- End Form Group -->
+                            </div>
+                            <!-- End Input -->
 
-                                <p class="text-gray-90 mb-4">Your personal data will be used to support your experience throughout this website, to manage your account, and for other purposes described in our <a href="#" class="text-blue">privacy policy.</a></p>
-                                <!-- Button -->
-                                <div class="mb-6">
-                                    <div class="mb-3">
-                                        <button type="submit" value="Submit" class="btn btn-primary-dark-w px-5">Register</button>
-                                    </div>
+                            <!-- Input -->
+                            <div class="col-sm-6 mb-6">
+                                <div class="js-form-message">
+                                    <label class="form-label">
+                                        Your Phone Number
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="number" class="form-control" name="phone" placeholder="Phone"
+                                        aria-label="Phone number" required data-msg="Please enter a valid phone number."
+                                        data-error-class="u-has-error" data-success-class="u-has-success">
                                 </div>
-                                <!-- End Button -->
-                            </form>
+                            </div>
+                            <!-- End Input -->
+                        </div>
+
+                        <!-- Form Group -->
+                        <div class="js-form-message form-group">
+                            <label class="form-label" for="signinSrPasswordExample2">Password<span
+                                    class="text-danger">*</span></label>
+                            <input type="password" class="form-control" name="password" id="signupPassword"
+                                placeholder="Password" aria-label="Password" required
+                                data-msg="Your password is invalid. Please try again." data-error-class="u-has-error"
+                                data-success-class="u-has-success">
+                        </div>
+                        <!-- End Form Group -->
+
+                        <!-- Form Group -->
+                        <div class="js-form-message form-group">
+                            <label class="form-label" for="signinSrConfirmPassword">Confirm password<span
+                                    class="text-danger">*</span></label>
+                            <input type="password" class="form-control" name="confirmPassword"
+                                id="signupConfirmPassword" placeholder="Confirm password" aria-label="Confirm password"
+                                required data-msg="Password does not match the confirm password."
+                                data-error-class="u-has-error" data-success-class="u-has-success">
+                        </div>
+                        <!-- End Form Group -->
+
+                        <p class="text-gray-90 mb-4">Your personal data will be used to support your experience
+                            throughout this website, to manage your account, and for other purposes described in our <a
+                                href="#" class="text-blue">privacy policy.</a></p>
+                        <!-- Button -->
+                        <div class="mb-6">
+                            <div class="mb-3">
+                                <button type="submit" value="Submit"
+                                    class="btn btn-primary-dark-w px-5">Register</button>
+                            </div>
+                        </div>
+                        <!-- End Button -->
+                    </form>
                 </div>
             </div>
         </div>
@@ -270,9 +313,12 @@
                 <div class="col-lg-5">
                     <div class="mb-6">
                         <a href="#" class="d-inline-block">
-                            <svg version="1.1" x="0px" y="0px" width="156px" height="37px" viewBox="0 0 175.748 42.52" enable-background="new 0 0 175.748 42.52">
-                                <ellipse fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700" cx="170.05" cy="36.341" rx="5.32" ry="5.367"></ellipse>
-                                <path fill-rule="evenodd" clip-rule="evenodd" fill="#333E48" d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
+                            <svg version="1.1" x="0px" y="0px" width="156px" height="37px" viewBox="0 0 175.748 42.52"
+                                enable-background="new 0 0 175.748 42.52">
+                                <ellipse fill-rule="evenodd" clip-rule="evenodd" fill="#FDD700" cx="170.05" cy="36.341"
+                                    rx="5.32" ry="5.367"></ellipse>
+                                <path fill-rule="evenodd" clip-rule="evenodd" fill="#333E48"
+                                    d="M30.514,0.71c-0.034,0.003-0.066,0.008-0.056,0.056
                                     C30.263,0.995,29.876,1.181,29.79,1.5c-0.148,0.548,0,1.568,0,2.427v36.459c0.265,0.221,0.506,0.465,0.725,0.734h6.187
                                     c0.2-0.25,0.423-0.477,0.669-0.678V1.387C37.124,1.185,36.9,0.959,36.701,0.71H30.514z M117.517,12.731
                                     c-0.232-0.189-0.439-0.64-0.781-0.734c-0.754-0.209-2.039,0-3.121,0h-3.176V4.435c-0.232-0.189-0.439-0.639-0.781-0.733
@@ -318,7 +364,8 @@
                             </div>
                             <div class="col pl-3">
                                 <div class="font-size-13 font-weight-light">Got questions? Call us 24/7!</div>
-                                <a href="tel:+80080018588" class="font-size-20 text-gray-90">(800) 8001-8588, </a><a href="tel:+0600874548" class="font-size-20 text-gray-90">(0600) 874 548</a>
+                                <a href="tel:+80080018588" class="font-size-20 text-gray-90">(800) 8001-8588, </a><a
+                                    href="tel:+0600874548" class="font-size-20 text-gray-90">(0600) 874 548</a>
                             </div>
                         </div>
                     </div>
@@ -331,22 +378,26 @@
                     <div class="my-4 my-md-4">
                         <ul class="list-inline mb-0 opacity-7">
                             <li class="list-inline-item mr-0">
-                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle" href="#">
+                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle"
+                                    href="#">
                                     <span class="fab fa-facebook-f btn-icon__inner"></span>
                                 </a>
                             </li>
                             <li class="list-inline-item mr-0">
-                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle" href="#">
+                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle"
+                                    href="#">
                                     <span class="fab fa-google btn-icon__inner"></span>
                                 </a>
                             </li>
                             <li class="list-inline-item mr-0">
-                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle" href="#">
+                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle"
+                                    href="#">
                                     <span class="fab fa-twitter btn-icon__inner"></span>
                                 </a>
                             </li>
                             <li class="list-inline-item mr-0">
-                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle" href="#">
+                                <a class="btn font-size-20 btn-icon btn-soft-light btn-bg-transparent rounded-circle"
+                                    href="#">
                                     <span class="fab fa-github btn-icon__inner"></span>
                                 </a>
                             </li>
@@ -359,25 +410,38 @@
                             <h6 class="mb-3 font-weight-bold">Find it Fast</h6>
                             <!-- List Group -->
                             <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Laptops & Computers</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Cameras & Photography</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Smart Phones & Tablets</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Video Games & Consoles</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">TV & Audio</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Gadgets</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Car Electronic & GPS</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Laptops & Computers</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Cameras & Photography</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Smart Phones & Tablets</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Video Games & Consoles</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">TV & Audio</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Gadgets</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Car Electronic & GPS</a></li>
                             </ul>
                             <!-- End List Group -->
                         </div>
 
                         <div class="col-12 col-md mb-4 mb-md-0">
                             <!-- List Group -->
-                            <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent mt-md-6">
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Printers & Ink</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Software</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Office Supplies</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Computer Components</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="product-categories-5-column-sidebar.html">Accesories</a></li>
+                            <ul
+                                class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent mt-md-6">
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Printers & Ink</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Software</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Office Supplies</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Computer Components</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="product-categories-5-column-sidebar.html">Accesories</a></li>
                             </ul>
                             <!-- End List Group -->
                         </div>
@@ -386,13 +450,24 @@
                             <h6 class="mb-3 font-weight-bold">Customer Care</h6>
                             <!-- List Group -->
                             <ul class="list-group list-group-flush list-group-borderless mb-0 list-group-transparent">
-                                <li><a class="list-group-item list-group-item-action" href="my-account.html">My Account</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="track-your-order.html">Order Tracking</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="wishlist.html">Wish List</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="https://transvelo.github.io/electro-html/2.0/html/home/terms-and-conditions.html">Customer Service</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="https://transvelo.github.io/electro-html/2.0/html/home/terms-and-conditions.html">Returns / Exchange</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="https://transvelo.github.io/electro-html/2.0/html/home/faq.html">FAQs</a></li>
-                                <li><a class="list-group-item list-group-item-action" href="https://transvelo.github.io/electro-html/2.0/html/home/terms-and-conditions.html">Product Support</a></li>
+                                <li><a class="list-group-item list-group-item-action" href="my-account.html">My
+                                        Account</a></li>
+                                <li><a class="list-group-item list-group-item-action" href="track-your-order.html">Order
+                                        Tracking</a></li>
+                                <li><a class="list-group-item list-group-item-action" href="wishlist.html">Wish List</a>
+                                </li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="https://transvelo.github.io/electro-html/2.0/html/home/terms-and-conditions.html">Customer
+                                        Service</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="https://transvelo.github.io/electro-html/2.0/html/home/terms-and-conditions.html">Returns
+                                        / Exchange</a></li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="https://transvelo.github.io/electro-html/2.0/html/home/faq.html">FAQs</a>
+                                </li>
+                                <li><a class="list-group-item list-group-item-action"
+                                        href="https://transvelo.github.io/electro-html/2.0/html/home/terms-and-conditions.html">Product
+                                        Support</a></li>
                             </ul>
                             <!-- End List Group -->
                         </div>
@@ -406,7 +481,8 @@
     <div class="bg-gray-14 py-2">
         <div class="container">
             <div class="flex-center-between d-block d-md-flex">
-                <div class="mb-3 mb-md-0">© <a href="#" class="font-weight-bold text-gray-90">Electro</a> - All rights Reserved</div>
+                <div class="mb-3 mb-md-0">© <a href="#" class="font-weight-bold text-gray-90">Electro</a> - All rights
+                    Reserved</div>
                 <div class="text-md-right">
                     <span class="d-inline-block bg-white border rounded p-1">
                         <img class="max-width-5" src="/img/100X60/img1.jpg" alt="Image Description">
@@ -432,7 +508,8 @@
 <!-- ========== END FOOTER ========== -->
 
 <!-- Go to Top -->
-<a class="js-go-to u-go-to" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed" data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp" data-hide-effect="slideOutDown">
+<a class="js-go-to u-go-to" href="#" data-position='{"bottom": 15, "right": 15 }' data-type="fixed"
+    data-offset-top="400" data-compensation="#header" data-show-effect="slideInUp" data-hide-effect="slideOutDown">
     <span class="fas fa-arrow-up u-go-to__inner"></span>
 </a>
 <!-- End Go to Top -->
