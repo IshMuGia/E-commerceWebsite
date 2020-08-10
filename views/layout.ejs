@@ -18,7 +18,7 @@
 
         gtag('config', 'UA-162154134-2');
     </script>
-    <!-- Data Layer -->
+    <!-- Data Layer
    <script>
         window.dataLayer = window.dataLayer || [];
         const urlParams = URLSearchParams(window.location.search);
@@ -26,7 +26,7 @@
         dataLayer = [{
           'userId': 'USER_ID'
         }];
-      </script> 
+      </script> -->
     <!-- Google Tag Manager -->
     <script>
         (function(w, d, s, l, i) {
@@ -43,17 +43,15 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M3SBRNW');
-       /* window.onload = function(){
-        const urlParams = URLSearchParams(window.location.search);
+        window.onload = function(){
+        const urlParams = new URLSearchParams(window.location.search);
         const USER_ID = urlParams.get('uid');
-        console.log(USER_ID)*/
         ga('create', 'UA-162154134-2', 'auto');
         //ga('set', 'userid', '147');
-        //ga('set', 'dimension2', 'Author');
-        /*ga('set', 'userId', USER_ID ); //Set the user ID using signed-in user_id.
-        console.log(USER_ID);*/
+        //ga('set', 'dimension2', 'Author');*/
+        ga('set', 'userId', USER_ID ); //Set the user ID using signed-in user_id
         ga('send', 'pageview');
-        
+        }
     </script>
     <!-- End Google Tag Manager -->
 
