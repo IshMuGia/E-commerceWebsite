@@ -9,7 +9,6 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162154134-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() {
             dataLayer.push(arguments);
         }
@@ -18,11 +17,12 @@
         gtag('config', 'UA-162154134-2');
     </script>
     <!-- Data Layer -->
-   <script>
+    <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
-    var userID='@Session["uid"]';
+    var uid = '<%=Session["uid"]%>'
+    //var userID='@Session["uid"]';
         dataLayer = [{
-          'userId': userID
+          'userId': uid
         }]; 
     </script> 
     <!-- Google Tag Manager -->
