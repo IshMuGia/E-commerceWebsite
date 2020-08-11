@@ -9,7 +9,6 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162154134-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() {
             dataLayer.push(arguments);
         }
@@ -17,15 +16,13 @@
 
         gtag('config', 'UA-162154134-2');
     </script>
-    <!-- Data Layer
-   <script>
-        window.dataLayer = window.dataLayer || [];
-        const urlParams = URLSearchParams(window.location.search);
-        const USER_ID = urlParams.get('uid');
+    <!-- Data Layer -->
+    <script>
+    window.dataLayer = window.dataLayer || [];
         dataLayer = [{
-          'userId': 'USER_ID'
-        }];
-      </script> -->
+          'Author': 'authorname'
+        }]; 
+    </script>
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
@@ -42,7 +39,9 @@
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
             f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-M3SBRNW');
-        window.onload = function () {
+        /*ga('create', 'UA-162154134-2', 'auto');
+        ga('send', 'pageview');
+        /*window.onload = function () {
             const urlParams = URLSearchParams(window.location.search);
             const USER_ID = urlParams.get('uid');
             console.log(USER_ID)
@@ -52,7 +51,7 @@
             ga('set', 'userId', USER_ID); //Set the user ID using signed-in user_id.
             console.log(USER_ID);
             ga('send', 'pageview');
-        }
+        }*/
         /*window.onload = function(){
         const urlParams = new URLSearchParams(window.location.search);
         const USER_ID = urlParams.get('uid');
