@@ -20,10 +20,9 @@
     <!-- Data Layer -->
    <script>
     window.dataLayer = window.dataLayer || [];
-    //var userID='@Session["uid"]';
-    var uid = '<%=Session["uid"]%>'
+    var userID='@Session["uid"]';
         dataLayer = [{
-          'userId': uid
+          'userId': userID
         }]; 
     </script> 
     <!-- Google Tag Manager -->
