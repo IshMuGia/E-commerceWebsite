@@ -151,6 +151,23 @@ router.get("/dproduct", (req, res) => {
         });
 });
 
+// Category Shop
+router.post("/categoryshop", (req, res) => {
+    Prod.find({ category: req.body.category }, 'brand category sub_brand mrp _id')
+        .exec()
+        .then(results => {
+            console.log(results);
+            if (results) {
+                res.render("shop", {
+                    results: results 
+                });
+            } else {
+                console.log("Empty")
+            }
+        })
+        .catch(err => console.log(err));
+});
+
 router.get("/addtocart", (req, res) => {
     const email = req.query.email;
     console.log(email)

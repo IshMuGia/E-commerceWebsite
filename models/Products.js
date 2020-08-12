@@ -17,6 +17,11 @@ const ProdSchema = new mongoose.Schema({
         required: true
 
     },
+    category: {
+        type: String,
+        required: true
+
+    },
     img1: {
         type: String,
         required: true
