@@ -152,8 +152,9 @@ router.get("/dproduct", (req, res) => {
 });
 
 // Category Shop
-router.post("/categoryshop", (req, res) => {
-    Prod.find({ category: req.body.category })
+router.get("/categoryshop", (req, res) => {
+
+    Prod.find({ category: req.query.category })
         .exec()
         .then(results => {
             console.log(results);
@@ -167,6 +168,7 @@ router.post("/categoryshop", (req, res) => {
         })
         .catch(err => console.log(err));
 });
+
 
 router.get("/addtocart", (req, res) => {
     const email = req.query.email;
