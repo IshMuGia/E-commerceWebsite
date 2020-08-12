@@ -153,7 +153,7 @@ router.get("/dproduct", (req, res) => {
 
 // Category Shop
 router.post("/categoryshop", (req, res) => {
-    Prod.find({ category: req.body.category }, 'brand category sub_brand mrp _id')
+    Prod.find({ category: req.body.category })
         .exec()
         .then(results => {
             console.log(results);
