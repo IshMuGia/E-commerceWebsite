@@ -157,6 +157,11 @@ const ProdSchema = new mongoose.Schema({
         required: true
 
     },
+    rating: {
+        type: Number,
+        required: true
+
+    },
     
     review: {
         type: mongoose.Types.ObjectId,
