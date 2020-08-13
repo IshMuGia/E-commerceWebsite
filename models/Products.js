@@ -162,6 +162,10 @@ const ProdSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "Review"
     },
+    rating: {
+        type: Number,
+        required: true
+    },
     category: {
         type: String,
         required: true
