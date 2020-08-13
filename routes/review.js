@@ -9,7 +9,9 @@ router.post("/", (req, res) => {
     var comment = req.body.comment;
     var model_no = req.body.id;
     var email = req.body.email;
-    User.find({ email: email }, 'fname lname -_id').then(results => {
+    User.find({
+        email: email
+    }, 'fname lname -_id').then(results => {
         console.log(results)
         fname = results[0].fname
         lname = results[0].lname
@@ -25,10 +27,34 @@ router.post("/", (req, res) => {
         console.log(newRev)
         newRev
             .save()
-            .then(Rev => {
-                res.redirect('/dproduct/?id=' + model_no);
-                console.log("Review Submitted");
-                console.log(newRev);
+            .then(rev => {
+                Rev.aggregate([{
+                            $match: {
+                                model_no : req.body.id
+                            }
+                        },
+                        {
+                            $group: {
+                                model_no: "$model_no",
+                                avgRating: {
+                                    $avg: "$rating"
+                                }
+                            }
+                        }
+                    ])
+                    .then(avgR => {
+                        console.log(avgR);
+                        res.redirect('/dproduct/?id=' + model_no);
+                        console.log("Review Submitted");
+                        console.log(rev);
+
+                    })
+                    .catch(err => {
+                        res.status(500).json({
+                            error: err
+                        });
+                    });
+
             })
             .catch(err => {
                 res.status(500).json({

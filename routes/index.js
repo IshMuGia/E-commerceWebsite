@@ -34,10 +34,10 @@ router.get("/logged", (req, res) => {
                                                 const docs = docs2.concat(docs3, docs4, docs5, docs1)
                                                 // console.log(docs)
                                                 res.render('index', {
-                                                results: docs
-                                             })
+                                                    results: docs
+                                                })
+                                            })
                                     })
-                            })
                                     .catch(err => {
                                         res.status(500).json({
                                             error: err
@@ -107,41 +107,43 @@ router.get("/dproduct", (req, res) => {
         .then(docs1 => {
             //console.log(docs1);
             Prod.find({
-                brand: docs1[0].brand
-            })
-            .exec()
-            .then(rel=>{
-                
-                rel = rel.slice(0, 6);                
-                //console.log(rel.length);
-                const docs = docs1.concat(rel)                
-                docs[7] = {"alert": "Save Product"};
-
-                Rev.find({
-                    product: id
+                    brand: docs1[0].brand
                 })
                 .exec()
-                .then(docs2 => {
-                    //console.log("ksddhlkf");
-                    const document = docs.concat(docs2)
-                    //console.log(document)
-                    console.log(document.length);
-                    res.render('product', {
-                        results: document
-                    });
+                .then(rel => {
+
+                    rel = rel.slice(0, 6);
+                    //console.log(rel.length);
+                    const docs = docs1.concat(rel)
+                    docs[7] = {
+                        "alert": "Save Product"
+                    };
+
+                    Rev.find({
+                            product: id
+                        })
+                        .exec()
+                        .then(docs2 => {
+                            //console.log("ksddhlkf");
+                            const document = docs.concat(docs2)
+                            //console.log(document)
+                            console.log(document.length);
+                            res.render('product', {
+                                results: document
+                            });
+                        })
+                        .catch(err => {
+                            res.status(500).json({
+                                error: err
+                            });
+                        });
+
                 })
                 .catch(err => {
                     res.status(500).json({
                         error: err
                     });
                 });
-
-            })
-            .catch(err => {
-                res.status(500).json({
-                    error: err
-                });
-            });
 
         })
         .catch(err => {
@@ -207,44 +209,94 @@ router.get("/addtowishlist", (req, res) => {
     var email = req.query.email;
     var model_no = req.query.model_no;
     Wishlist.findOne({
-        email: email,
-        model_no: model_no
+            email: email,
+            model_no: model_no
         })
         .then(exist => {
-            //if productexist than return status 400
-            //console.log("User not exist");
             if (!exist) {
-                const alert = "Product Saved!";
-                req.session.alert = alert;
+                s = 0;
                 const newwish = new Wishlist({
                     _id: new mongoose.Types.ObjectId(),
                     model_no: model_no,
                     email: email,
                 });
-
-                console.log(newwish)
+                console.log("newwish obj created")
                 newwish
                     .save()
-                    .then(Wishlist => {
-                        res.redirect('/dproduct/?id=' + req.query.model_no);
-                        console.log("Added to Wishlist");
-                        console.log(newwish);
+                    .then(wishlist => {
+                        console.log("wishlist added")
                     })
                     .catch(err => {
                         res.status(500).json({
                             error: err
                         });
                     });
+            } else if (exist) {
+                s = 1;
             }
-            if (exist) {
-                const alert = "Product already Exist!";
-                //res.send(alert);
-                req.session.alert = alert;
-                res.sendStatus(200)
+            console.log(s)
+            Prod.find({
+                    model_no: model_no
+                })
+                .exec()
+                .then(docs1 => {
+                    //console.log(docs1);
+                    Prod.find({
+                            brand: docs1[0].brand
+                        })
+                        .exec()
+                        .then(rel => {
+                            rel = rel.slice(0, 6);
+                            //console.log(rel.length);
+                            const docs = docs1.concat(rel)
+                            if (s == 0) {
+                                docs[7] = {
+                                    "alert": "Product Saved!"
+                                };
+                            } else {
+                                docs[7] = {
+                                    "alert": "Product Already Exists!"
+                                };
+                            }
 
-            }
+                            Rev.find({
+                                    product: model_no
+                                })
+                                .exec()
+                                .then(docs2 => {
+                                    //console.log("ksddhlkf");
+                                    const document = docs.concat(docs2)
+                                    //console.log(document)
+                                    console.log(document.length);
+                                    res.render('product', {
+                                        results: document
+                                    });
+                                })
+                                .catch(err => {
+                                    res.status(500).json({
+                                        error: err
+                                    });
+                                });
+
+                        })
+                        .catch(err => {
+                            res.status(500).json({
+                                error: err
+                            });
+                        });
+
+                })
+                .catch(err => {
+                    res.status(500).json({
+                        error: err
+                    });
+                });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
+        });
 
 
 });
@@ -266,6 +318,27 @@ router.get("/removefromwishlist", (req, res) => {
             });
         });
 });
+
+// Category Shop
+router.post("/categoryshop", (req, res) => {
+    Prod.find({
+            category: req.body.category
+        }, 'brand category sub_brand mrp _id')
+        .exec()
+        .then(results => {
+            console.log("lolvhgndk");
+            console.log(results);
+            if (results) {
+                res.render("shop", {
+                    results: results
+                });
+            } else {
+                console.log("Empty")
+            }
+        })
+        .catch(err => console.log(err));
+});
+
 //const g_docs = [];
 router.get("/wishlist", (req, res) => {
     var email = req.query.email;

@@ -161,6 +161,11 @@ const ProdSchema = new mongoose.Schema({
     review: {
         type: mongoose.Types.ObjectId,
         ref: "Review"
+    },
+    category: {
+        type: String,
+        required: true
+
     }
 });
 
