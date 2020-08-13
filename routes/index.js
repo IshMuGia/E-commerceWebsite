@@ -234,7 +234,7 @@ router.get("/addtowishlist", (req, res) => {
             } else if (exist) {
                 s = 1;
             }
-            console.log(s)
+            //console.log(s)
             Prod.find({
                     model_no: model_no
                 })
