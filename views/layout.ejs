@@ -16,51 +16,15 @@
 
         gtag('config', 'UA-162154134-2');
     </script>
-    <!-- Data Layer -->
-    <script>
-    window.dataLayer = window.dataLayer || [];
-        dataLayer = [{
-          'Author': 'authorname'
-        }]; 
-    </script>
+    
     <!-- Google Tag Manager -->
-    <script>
-        (function (w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-M3SBRNW');
-        /*ga('create', 'UA-162154134-2', 'auto');
-        ga('send', 'pageview');
-        /*window.onload = function () {
-            const urlParams = URLSearchParams(window.location.search);
-            const USER_ID = urlParams.get('uid');
-            console.log(USER_ID)
-            ga('create', 'UA-162154134-2', 'auto');
-            //ga('set', 'userid', '147');
-            //ga('set', 'dimension2', 'Author');
-            ga('set', 'userId', USER_ID); //Set the user ID using signed-in user_id.
-            console.log(USER_ID);
-            ga('send', 'pageview');
-        }*/
-        /*window.onload = function(){
-        const urlParams = new URLSearchParams(window.location.search);
-        const USER_ID = urlParams.get('uid');
-        ga('create', 'UA-162154134-2', 'auto');
-        //ga('set', 'userid', '147');
-        //ga('set', 'dimension2', 'Author');
-        ga('set', 'userId', USER_ID ); //Set the user ID using signed-in user_id
-        ga('send', 'pageview');
-        }*/
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M3SBRNW');</script>
+    <!-- End Google Tag Manager -->
+    
     </script>
     <!-- End Google Tag Manager -->
 
