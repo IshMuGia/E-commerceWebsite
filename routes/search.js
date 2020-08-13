@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const Prod = require('../models/Products');
 const Search = require('../models/Search');
 
-router.post("/", (req, res) => {
-    var email = req.body.email;
-    var word = req.body.word; {
+router.get("/", (req, res) => {
+    var email = req.query.email;
+    var word = req.query.word; {
         const newsearch = new Search({
             _id: new mongoose.Types.ObjectId(),
             word: word,

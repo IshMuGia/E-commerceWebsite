@@ -666,11 +666,12 @@
                             <div class="mb-2">
                                 <a class="d-inline-flex align-items-center small font-size-15 text-lh-1" href="#">
                                     <div class="text-warning mr-2">
-                                        <small class="fas fa-star"></small>
-                                        <small class="fas fa-star"></small>
-                                        <small class="fas fa-star"></small>
-                                        <small class="fas fa-star"></small>
-                                        <small class="far fa-star text-muted"></small>
+                                            <% for (var i=0; i<results[0].rating; i++){%>
+                                                <small class="fas fa-star"></small>
+                                            <%}%>
+                                            <% for (var i=0; i<5-results[0].rating; i++){%>
+                                                <small class="far fa-star text-muted"></small>
+                                            <%}%>
                                     </div>
                                 </a>
                             </div>
@@ -698,7 +699,7 @@
                         <div class="d-md-flex align-items-end mb-3">
                             <a href="/addtowishlist/?email=<%=email%>&model_no=<%=results[0].model_no%>"
                                 class="btn px-5 btn-primary-dark transition-3d-hover"><i
-                                    class="fa fa-bookmark mr-2 font-size-18"></i> Save Product</a>
+                                    class="fa fa-bookmark mr-2 font-size-18"></i> <%=results[7].alert%></a>
                         </div>
                     </div>
                 </div>

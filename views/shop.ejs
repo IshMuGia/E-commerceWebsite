@@ -595,7 +595,6 @@
                                                                 href="/subbrandshop/?sub_brand=2 Pack Models"
                                                                 class="nav-link u-header__sub-menu-nav-link">2
                                                                 Pack Models</a></span>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -655,11 +654,12 @@
                                             <div class="mb-3 d-none d-md-block">
                                                 <a class="d-inline-flex align-items-center small font-size-14" href="#">
                                                     <div class="text-warning mr-2">
-                                                        <small class="fas fa-star"></small>
-                                                        <small class="fas fa-star"></small>
-                                                        <small class="fas fa-star"></small>
-                                                        <small class="fas fa-star"></small>
-                                                        <small class="far fa-star text-muted"></small>
+                                                        <% for (var i=0; i<result.rating; i++){%>
+                                                            <small class="fas fa-star"></small>
+                                                        <%}%>
+                                                        <% for (var i=0; i<5-result.rating; i++){%>
+                                                            <small class="far fa-star text-muted"></small>
+                                                        <%}%>
                                                     </div>
                                                 </a>
                                             </div>
