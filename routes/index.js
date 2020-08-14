@@ -75,26 +75,48 @@ router.get("/myaccount", (req, res) => {
 
 router.get('/logout', (req, res) => {
     var currentDate = new Date();
-    //console.log(currentDate);
+    const lin = new Date(req.session.logdate);
+    console.log("login " + lin + " Logout " + currentDate)
+    var delta = Math.abs(currentDate - lin) / 1000
+    var days = Math.floor(delta / 86400);
+    delta -= days * 86400;
+
+    // calculate (and subtract) whole hours
+    var hours = Math.floor(delta / 3600) % 24;
+    delta -= hours * 3600;
+
+    // calculate (and subtract) whole minutes
+    var minutes = Math.floor(delta / 60) % 60;
+    delta -= minutes * 60;
+
+    // what's left is seconds
+    var seconds = Math.round(delta % 60);
+    const duration = days + "days:" + hours + "Hrs:" + minutes + "mins:" + seconds + "secs"
+    
     var myquery = {
         email: req.session.email
     };
     var newvalues = {
         $set: {
-            logout: currentDate
+            logout: currentDate, duration: duration
         }
     };
-    console.log(newvalues);
-    Act.updateOne(myquery, newvalues, function (err, result) {
-        if (err) throw err;
-        //console.log(result);
-        req.session.destroy((err) => {
-            if (err) {
-                return console.log(err);
-            }
-            res.redirect('/');
+    Act.findOneAndUpdate(myquery, newvalues, {new: true}
+        )
+        .then(result => {
+            console.log(result)
+            req.session.destroy((err) => {
+                if (err) {
+                    return console.log(err);
+                }
+                res.redirect('/');
+            });
+        })
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            });
         });
-    });
 });
 
 router.get("/dproduct", (req, res) => {
@@ -156,13 +178,15 @@ router.get("/dproduct", (req, res) => {
 // Category Shop
 router.get("/categoryshop", (req, res) => {
 
-    Prod.find({ category: req.query.category })
+    Prod.find({
+            category: req.query.category
+        })
         .exec()
         .then(results => {
             console.log(results);
             if (results) {
                 res.render("shop", {
-                    results: results 
+                    results: results
                 });
             } else {
                 console.log("Empty")

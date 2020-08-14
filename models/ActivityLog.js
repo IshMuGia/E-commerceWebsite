@@ -8,6 +8,9 @@ const ActSchema = new mongoose.Schema({
     login: {
         type: Date
     },
+    duration: {
+        type: String
+    },
     logout: {
         type: Date
     }
