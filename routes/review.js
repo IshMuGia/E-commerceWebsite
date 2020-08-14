@@ -46,19 +46,12 @@ router.post("/", (req, res) => {
                         }
                     ])
                     .then(avgR => {
-                        // console.log();
+                        console.log("fdvhj vds");
                         r = Math.round(avgR[0].avgRating);
-                        Prod.findOneAndUpdate({
-                                model_no: model_no
-                            }, {
-                                rating: r
-                            })
+                        Prod.findOneAndUpdate(
+                            {model_no: model_no}, {rating: r})
                             .then(doc => {
-                                console.log("hpgyabro");
-                                //console.log("hjhd")
                                 res.redirect('/dproduct/?id=' + model_no);
-                                // console.log("Review Submitted");
-                                // console.log(rev);
                             })
                             .catch(err => {
                                 res.status(500).json({
