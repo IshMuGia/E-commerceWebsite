@@ -739,7 +739,7 @@
                                     </div>
                                     <div class="col-xl-7 col-6 flex-horizontal-center ml-auto ml-md-0"
                                         data-scs-animation-in="fadeInRight" data-scs-animation-delay="500">
-                                        <img class="img-fluid ml-auto mr-10 mr-wd-auto h-100" src="/img/2.png"
+                                        <img class="img-fluid ml-auto mr-10 mr-wd-auto h-100" src="https://drive.google.com/uc?export=view&id=1iY7VLKvCcPghPnhuebDnzD8m59fasqj5"
                                             alt="Image Description">
                                     </div>
                                 </div>
@@ -768,7 +768,7 @@
                                     </div>
                                     <div class="col-xl-7 col-6 flex-horizontal-center ml-auto ml-md-0"
                                         data-scs-animation-in="fadeInRight" data-scs-animation-delay="500">
-                                        <img class="img-fluid ml-auto mr-10 mr-wd-auto h-100" src="/img/3.png"
+                                        <img class="img-fluid ml-auto mr-10 mr-wd-auto h-100" src="https://drive.google.com/uc?export=view&id=1iZVkf8zvJe-jlcXEWeMbAGwdmUre2prh"
                                             alt="Image Description">
                                     </div>
                                 </div>
@@ -895,6 +895,42 @@
         
         </ul>
         </div>
+        <div class="tab-pane fade pt-2" id="pills-three-example1" role="tabpanel" aria-labelledby="pills-three-example1-tab" data-target-group="groups">
+            <ul class="row list-unstyled products-group no-gutters">
+                <% for (var i=198; i<204; i++){%>
+                <li class="col-6 col-md-4 col-xl product-item">
+                    <div class="product-item__inner px-xl-4 p-3">
+                        <div class="product-item__body pb-xl-2">
+                            <div class="mb-2"><a href=""
+                                    class="font-size-12 text-gray-5"><%= results[i].brand %></a></div>
+                            <h5 class="mb-1 product-item__title"><a
+                                    href="/dproduct/?id=<%=results[i].model_no%>"
+                                    class="text-blue font-weight-bold"><%= results[i].model_no %></a>
+                            </h5>
+                            <div class="mb-2">
+                                <a href="/dproduct/?id=<%=results[i].model_no%>"
+                                    class="d-block text-center"><img class="img-fluid"
+                                        src="<%= results[i].img1 %>" alt="<%=results[i].model_no%>"></a>
+                            </div>
+                            <div class="flex-center-between mb-1">
+                                <div class="prodcut-price">
+                                    <div class="text-gray-100">₹<%= results[i].mrp %></div>
+                                </div>
+                                <div class="d-none d-xl-block prodcut-add-cart">
+                                    <a href="/addtowishlist/?email=<%=email%>&model_no=<%=results[i].model_no%>"
+                                        class="btn-add-cart btn-primary transition-3d-hover"><i
+                                            class="fa fa-bookmark"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-item__footer">
+                        </div>
+                    </div>
+                </li>
+                <%}%>
+
+</ul>
+</div>
             
                 <br>
                 <!-- Feature List -->
@@ -1371,8 +1407,8 @@
                                         <i class="ec ec-support text-gray-90 font-size-56"></i>
                                     </div>
                                     <div class="col pl-3">
-                                        <div class="font-size-13 font-weight-light">Got questions? Mail us!</div>
-                                        elex.electronix@gmail.com
+                                        <div class="font-size-13 ">Got questions? Mail us!</div>
+                                        <a href="mailto:elex.electronicx@gmail.com" class="text-black">elex.electronicx@gmail.com</a>
                                     </div>
                                 </div>
                             </div>
